@@ -80,7 +80,7 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         return new ViewHolder(view);
     }
     @Override
-    public void onBindViewHolder(ViewHolder holder, final int position){
+    public void onBindViewHolder(final ViewHolder holder, final int position){
         final Fruit fr = mFruitList.get(position);
         //load each item in holder(list item)
         //download image ..set text;
@@ -99,7 +99,8 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
             @Override
             public void onClick(View view) {
                 Log.d(TAG, "onClick: click"+fr.name);
-                Intent in = getIntent2FruitshopActivity(mContext,mFruitList.get(position));
+                Intent in = getIntent2FruitshopActivity
+                        (mContext,mFruitList.get(holder.getAdapterPosition()));
                 in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 mContext.startActivity(in);
                 //add intent ,open the fruit detail activty;

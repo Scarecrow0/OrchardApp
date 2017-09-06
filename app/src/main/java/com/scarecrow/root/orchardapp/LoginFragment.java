@@ -10,9 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created by root on 17-8-8.
  *
@@ -40,9 +37,9 @@ public class LoginFragment extends Fragment {
                     tv.setText("请填满所有的文本框");
                     return;
                 }
-                List<String> st = new ArrayList<String>();
-                st.add(username);
-                st.add(password);
+                String st[] = new String []{
+                        username,password  };
+
                 new UserInfoUpdaterLogin().execute(st);
                 //check user info locally
                 // send to server by AsnyTask

@@ -98,10 +98,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ruyuanrenshu"/>
+                android:text="@string/ruyuanrenshu"
+                android:layout_gravity="center"/>
             <NumberPicker
                 android:layout_width="50dp"
-                android:layout_height="20dp"
+                android:layout_height="45dp"
                 android:id="@+id/booking_count">
 
             </NumberPicker>
@@ -116,25 +117,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/ruyuanshijian"
-                android:paddingRight="15dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/yue_month"/>
+                android:paddingRight="15dp"
+                android:layout_gravity="center"/>
+
             <NumberPicker
-                android:layout_width="30dp"
-                android:layout_height="20dp"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
                 android:id="@+id/booking_month">
             </NumberPicker>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ri"/>
+                android:text="@string/yue_month"
+                android:layout_gravity="center"/>
+
             <NumberPicker
-                android:layout_width="30dp"
-                android:layout_height="20dp"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
                 android:id="@+id/booking_day">
             </NumberPicker>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ri"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 

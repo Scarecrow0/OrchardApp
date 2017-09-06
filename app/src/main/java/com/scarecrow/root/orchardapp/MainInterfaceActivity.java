@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -36,6 +37,12 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.main_interface);
+
+        String[] param  = new String[]{
+                "aaa123","aaa"
+        };
+        new AutoLogin().execute(param);
+
         mFraList = new ArrayList<>();
         //init guide bar buttoms
         LinearLayout ll[] = new LinearLayout[]{
@@ -131,5 +138,22 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     public void onDestroy(){
         super.onDestroy();
 
+    }
+
+    private class AutoLogin extends UserInfoUpdater{
+        @Override
+        protected void onPostExecute(String mresult){
+            if (!mresult.equals("None")) {
+                Toast.makeText
+                        (getBaseContext(), "login success! login automaticlly", Toast.LENGTH_SHORT)
+                        .show();
+                logined_usr = MainInterfaceActivity.UpdateUInfobyJSONstr(mresult);
+                isLogin = true;
+                return;
+            }
+            Toast.makeText
+                    (getBaseContext(), "login failed! please check your username and password", Toast.LENGTH_SHORT)
+                    .show();
+        }
     }
 }

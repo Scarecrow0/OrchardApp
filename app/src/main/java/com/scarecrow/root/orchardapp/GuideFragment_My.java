@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
@@ -93,9 +92,8 @@ public class GuideFragment_My extends Fragment {
     }
     public void refreshUserDataShow(){
         if (MainInterfaceActivity.isLogin) {
-            List<String> user = new ArrayList<String>();
-            user.add(MainInterfaceActivity.logined_usr.username);
-            user.add(MainInterfaceActivity.logined_usr.password);
+            String[] user = new String[]{MainInterfaceActivity.logined_usr.username,
+                    MainInterfaceActivity.logined_usr.password};
             new UserInfoUpdaterRefresh().execute(user);
         } else
             return;

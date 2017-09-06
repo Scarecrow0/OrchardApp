@@ -5,8 +5,6 @@ import android.util.Log;
 
 import org.json.JSONObject;
 
-import java.util.List;
-
 import static android.content.ContentValues.TAG;
 
 /**
@@ -14,17 +12,17 @@ import static android.content.ContentValues.TAG;
  * in order to update user info
  */
 
-public class UserInfoUpdater extends AsyncTask<List<String>,Void,String> {
+public class UserInfoUpdater extends AsyncTask<String,Void,String> {
 
         private String mresult;
         private JSONObject jsonObject;
         @Override
         @SafeVarargs
-        final protected String doInBackground(List<String>...params){
+        final protected String doInBackground(String...params){
             try {
                 jsonObject = new JSONObject();
-                jsonObject.put("username",params[0].get(0));
-                jsonObject.put("password",params[0].get(1));
+                jsonObject.put("username",params[0]);
+                jsonObject.put("password",params[1]);
                 ServerContacter sc = new ServerContacter();
                 Log.d(TAG, "doInBackground: upload new userinfo " + jsonObject);
                 mresult = sc.getURLString(MainInterfaceActivity.Server_ip+"/app/login","userjson="+jsonObject.toString());
