@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!--gallery -->
+                <com.scarecrow.root.orchardapp.AdsBanner
+                    android:id="@+id/main_ads_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp">
+
+                </com.scarecrow.root.orchardapp.AdsBanner>
+
+                <!-- section one-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+                    android:orientation="horizontal"
+                    android:paddingBottom="10dp"
+                    android:paddingTop="10dp">
+
+                    <!--button -->
+                    <LinearLayout
+                        android:id="@+id/bottom_guangguoyuan"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="0.01dp"
+                        android:layout_weight="1.5"
+                        android:background="@color/maingreen"
+                        android:clickable="true"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/guangguoyuan"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="30sp" />
+                    </LinearLayout>
+
+                    <!--gallery-->
+                    <com.scarecrow.root.orchardapp.AdsBanner
+                        android:id="@+id/main_ads_orchard"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3">
+
+                    </com.scarecrow.root.orchardapp.AdsBanner>
+                </LinearLayout>
+
+                <!-- section two-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+                    android:paddingBottom="10dp">
+                    <!--gallery-->
+                    <com.scarecrow.root.orchardapp.AdsBanner
+                        android:id="@+id/main_ads_fruit"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3">
+
+                    </com.scarecrow.root.orchardapp.AdsBanner>
+
+                    <!--buttom -->
+                    <LinearLayout
+                        android:id="@+id/bottom_chishuiguo"
+                        android:layout_width="0.01dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="0.01dp"
+                        android:layout_weight="1.5"
+                        android:background="@color/maingreen"
+                        android:clickable="true"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/chishuiguo"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="30sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!-- section three-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="125dp"
+                    android:paddingBottom="10dp">
+                    <!--bottom -->
+                    <LinearLayout
+                        android:id="@+id/bottom_xiaojiangkang"
+                        android:layout_width="0.01dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="0.1dp"
+                        android:layout_weight="1.5"
+                        android:background="@color/maingreen"
+                        android:clickable="true"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/xiaojiankang"
+                            android:textAlignment="center"
+                            android:textColor="#FFFFFF"
+                            android:textSize="30sp" />
+                    </LinearLayout>
+
+                    <!--gallery-->
+                    <com.scarecrow.root.orchardapp.AdsBanner
+                        android:id="@+id/main_ads_healthy"
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3">
+
+                    </com.scarecrow.root.orchardapp.AdsBanner>
+
+                </LinearLayout>
+
+
+                <!--
+                add viewpager :
+                    event_recommd/other_tour
+                -->
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

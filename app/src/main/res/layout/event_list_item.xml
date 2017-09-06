@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="horizontal"
+    android:layout_height="wrap_content"
+    android:id="@+id/event_item">
+    <ImageView
+        android:id="@+id/event_item_image"
+        android:layout_width="1dp"
+        android:layout_height="100dp"
+        android:layout_weight="1" />
+    <LinearLayout
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/event_item_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8" />
+        <TextView
+            android:id="@+id/event_item_bref"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/event_occur_orchard_n_date"
+            android:layout_weight=".7"
+            android:textColor="@color/colorAccent"
+            android:gravity="right"/>
+            <!--set this TextView to display event state to user-->
+    </LinearLayout>
+</LinearLayout>

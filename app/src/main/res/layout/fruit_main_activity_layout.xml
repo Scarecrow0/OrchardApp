@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="top">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:text="@string/chishuiguo"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:background="@color/buttongreen" />
+
+
+    <com.scarecrow.root.orchardapp.AdsBanner
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/fruit_banner">
+
+    </com.scarecrow.root.orchardapp.AdsBanner>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="@color/lightgray">
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dangjihaoshuiguo"
+        android:textSize="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:weightSum="1">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/paixuefangshi"
+            android:textSize="12sp"
+            android:gravity="center_vertical"
+            android:layout_weight="0.21" />
+        <Button
+            android:layout_width="69dp"
+            android:layout_height="match_parent"
+            android:text="@string/zonghezuigao"
+            android:textSize="12sp"
+            android:gravity="left"
+            android:id="@+id/fruit_list_sortby_all"
+            android:layout_weight="0.07" />
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:text="@string/xiaoliangzuijia"
+            android:id="@+id/fruit_list_sortby_hot"
+            android:textSize="12sp"
+            android:gravity="left"
+            android:layout_weight="0.03" />
+        <Button
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:text="@string/zuixingshangshi"
+            android:id="@+id/fruit_list_sortby_rating"
+            android:textSize="12sp"
+            android:gravity="left"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/lightgray">
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/fruit_list"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="8">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+</LinearLayout>
