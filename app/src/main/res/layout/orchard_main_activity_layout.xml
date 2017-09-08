@@ -46,14 +46,15 @@
                     android:id="@+id/orchard_single_entrybutton"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_marginRight="25dp"
+                    android:layout_marginEnd="25dp"
                     android:text="@string/dingmengpiao" />
 
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
-                    android:layout_marginRight="25dp"
-                    android:text="@string/zhangshangdaoyou" />
+                    android:layout_marginEnd="25dp"
+                    android:text="@string/zhangshangdaoyou"
+                    android:id="@+id/LBS_activity_entry"/>
 
                 <Button
                     android:layout_width="wrap_content"

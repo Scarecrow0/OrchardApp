@@ -12,10 +12,11 @@ import java.util.List;
 
 /**
  * Created by root on 17-8-11.
+ *
  */
 
 public class OrchardMainActivity extends AppCompatActivity {
-    private RecyclerView mEventRv,mOrchardRv;
+    private RecyclerView mEventRv;
     public void onCreate(Bundle onSaveInstanceState){
         super.onCreate(onSaveInstanceState);
         setContentView(R.layout.orchard_main_activity_layout);
@@ -45,6 +46,14 @@ public class OrchardMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getBaseContext(),OrchardSingleActivity.class);
+                startActivity(in);
+            }
+        });
+        bt = (Button) findViewById(R.id.LBS_activity_entry);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getBaseContext(),LBSGuideActivity.class);
                 startActivity(in);
             }
         });
