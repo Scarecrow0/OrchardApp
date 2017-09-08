@@ -156,7 +156,7 @@ public class LBSGuideActivity extends AppCompatActivity {
 
             if(hasBestEvent.equals("yes")) {
                 bestEvent = new OrchardEvent()
-                        .unpackAEventFromJSON(json_obj.getJSONObject("best_event"));
+                        .parserEachEventJSON(json_obj.getJSONObject("best_event"));
                 str += "best event : " + bestEvent.name + "\n";
                 RecyclerView best_event_rv =(RecyclerView) findViewById(R.id.recommd_event);
                 RecyclerView.LayoutManager  lm = new LinearLayoutManager(getBaseContext());

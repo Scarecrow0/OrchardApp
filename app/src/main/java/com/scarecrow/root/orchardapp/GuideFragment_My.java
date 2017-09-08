@@ -1,5 +1,6 @@
 package com.scarecrow.root.orchardapp;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
@@ -43,17 +44,22 @@ public class GuideFragment_My extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         RV_joinedEvent.setLayoutManager(layoutManager);
         layoutManager = new LinearLayoutManager(getContext());
-      //  RV_boughtticketList.setLayoutManager(layoutManager);
+        RV_boughtticketList.setLayoutManager(layoutManager);
 
         //TODO ticket booking  ,Adapter
 
-        FruitRecListAdapter fra = new FruitRecListAdapter(getContext());
+        FruitListAdapterUserInfo fra = new FruitListAdapterUserInfo(getContext());
         RV_boughtFruitList.addItemDecoration(new DividerItemDecoration(getContext(),1));
         RV_boughtFruitList.setAdapter(fra);
 
-        EventsRecListAdapter eRLAdapter = new EventsRecListAdapter(getContext());
+        EventListAdapterUserInfo eRLAdapter = new EventListAdapterUserInfo(getContext());
         RV_joinedEvent.setAdapter(eRLAdapter);
         RV_joinedEvent.addItemDecoration(new DividerItemDecoration(getContext(),1));
+
+        TicketBoughtListAdapter TCLAdapter = new TicketBoughtListAdapter(getContext());
+        RV_boughtticketList.addItemDecoration(new DividerItemDecoration(getContext(),1));
+        RV_boughtticketList.setAdapter(TCLAdapter);
+
         if(MainInterfaceActivity.isLogin) {
             setIntoLoginedState(MainInterfaceActivity.logined_usr);
         }
@@ -111,8 +117,8 @@ public class GuideFragment_My extends Fragment {
         TextView tv = mfragmentview.findViewById(R.id.loginreg_interface_button);
         tv.setGravity(View.FOCUS_LEFT);
         tv.setText(uinfo.toString());
-        final FruitRecListAdapter fra = (FruitRecListAdapter) RV_boughtFruitList.getAdapter();
-        fra.setOnAdapterReadyListenner(new FruitRecListAdapter.AdapterReadyListenner() {
+        final FruitListAdapterUserInfo fra = (FruitListAdapterUserInfo ) RV_boughtFruitList.getAdapter();
+        fra.setOnAdapterReadyListenner(new FruitListAdapterUserInfo .AdapterReadyListenner() {
             @Override
             public void onAdapterReady() {
                 fra.updateFruitlistbyUserInfo(uinfo);
@@ -126,12 +132,16 @@ public class GuideFragment_My extends Fragment {
         oe.setOnEventListReadyListener(new OrchardEvent.onEventListReadyListener() {
             @Override
             public void onEventListReady(List<OrchardEvent> oe) {
-                EventsRecListAdapter ERLA
-                        = (EventsRecListAdapter) RV_joinedEvent.getAdapter();
+                EventListAdapterUserInfo ERLA
+                        = (EventListAdapterUserInfo) RV_joinedEvent.getAdapter();
                 ERLA.updateDatabyUInfo(uinfo,oe);
             }
         });
         oe.updateAllEventList();
+
+        TicketBoughtListAdapter tmp_TicketAdapter
+                = (TicketBoughtListAdapter) RV_boughtticketList.getAdapter();
+        tmp_TicketAdapter.updataData(MainInterfaceActivity.logined_usr.TicketboughtList);
     }
     private class UserInfoUpdaterRefresh extends UserInfoUpdater{
         @Override
@@ -140,7 +150,28 @@ public class GuideFragment_My extends Fragment {
             setIntoLoginedState(MainInterfaceActivity.logined_usr);
         }
     }
+
+
+    private class FruitListAdapterUserInfo extends FruitRecListAdapter{
+        public  FruitListAdapterUserInfo(Context context){
+            super(context);
+        }
+        @Override
+        protected void onItemClicked(Fruit fr){
+            return;
+        }
+    }
+    private class EventListAdapterUserInfo extends EventsRecListAdapter{
+        public EventListAdapterUserInfo(Context context){
+            super(context);
+        }
+        @Override
+        protected void onItemClicked(OrchardEvent oe){
+            return;
+        }
+    }
 }
+
 
 
 

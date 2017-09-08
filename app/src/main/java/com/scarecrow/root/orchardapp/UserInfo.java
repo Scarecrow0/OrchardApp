@@ -21,7 +21,7 @@ public class UserInfo implements Serializable{
     public List<StringPair> FruitboughtList = new ArrayList<>();
     //first is fruit name ,next is bought amount
     public List<StringPair> TicketboughtList = new ArrayList<>();
-    //ticket name , bought date
+    // first
     public List<StringPair> EventjoinedList = new ArrayList<>();
     // first is event name ,second is finish state and date ;
     // append finish state as a alphabet at next_str first letter;
@@ -69,7 +69,7 @@ public class UserInfo implements Serializable{
             for (int i = 0;i < ticketjson.length();i++){
                 tmp_jobj = ticketjson.getJSONArray(i);
                 tmp_pair = new StringPair
-                        (tmp_jobj.getString(1),tmp_jobj.getString(2));
+                        (tmp_jobj.getString(0),tmp_jobj.getString(1));
                 TicketboughtList.add(tmp_pair);
             }
         }catch (Exception ee){

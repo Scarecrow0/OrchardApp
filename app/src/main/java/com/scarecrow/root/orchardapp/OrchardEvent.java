@@ -73,7 +73,7 @@ public class OrchardEvent implements Serializable{
                 String str_res = new ServerContacter()
                         .getURLString(request_url
                                         ,"currorchard="+ MainInterfaceActivity.logined_usr.currorchard);
-                Log.d(TAG, "doInBackground: get_jsonback str" + str_res);
+                Log.d(TAG, "doInBackground: get_Event List jsonback str" );
                 if(str_res != null){
                     processJSON(str_res);
                 }
@@ -95,7 +95,7 @@ public class OrchardEvent implements Serializable{
             mEventList = new ArrayList<>();
             JSONArray Jsonarr = new JSONArray(json_str);
             for(int i = 0;i < Jsonarr.length();i++){
-                mEventList.add(unpackAEventFromJSON(Jsonarr.getJSONObject(i)));
+                mEventList.add(parserEachEventJSON(Jsonarr.getJSONObject(i)));
             }
 
         }
@@ -103,7 +103,7 @@ public class OrchardEvent implements Serializable{
     }
 
 
-    public OrchardEvent unpackAEventFromJSON (JSONObject item)throws JSONException{
+    public OrchardEvent parserEachEventJSON (JSONObject item)throws JSONException{
         OrchardEvent tmp_event = new OrchardEvent();
         tmp_event.bref = item.getString("bref");
         tmp_event.date = item.getString("date");

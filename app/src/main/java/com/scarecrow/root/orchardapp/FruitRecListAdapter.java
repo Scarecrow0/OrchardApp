@@ -29,24 +29,13 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
     private AdapterReadyListenner mARl;
     private boolean isForBroughtList = false;
     //Fruit --> imageurl ,all kinds of text;
-    public static Intent getIntent2FruitshopActivity(Context context,Fruit clickedFruit){
-        //intent to "buy_fruit_activity"
-        Intent in = new Intent(context,FruitShopActivity.class);
-        in.putExtra("clickedFruit",clickedFruit);
-        return in;
-    }
-    public interface AdapterReadyListenner{
-        void onAdapterReady();
-    }
-    public void setOnAdapterReadyListenner(AdapterReadyListenner ARL){
 
-        mARl = ARL;
-    }
 
     public  FruitRecListAdapter(Context context){
         super();
         mContext = context;
     }
+
     public void setmFruitList(){
         Fruit fr = new Fruit();
         fr.setOnProcessCompleteListener(new Fruit.ProcessCompleteListener() {
@@ -98,15 +87,38 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         holder.fruitItem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG, "onClick: click"+fr.name);
-                Intent in = getIntent2FruitshopActivity
-                        (mContext,mFruitList.get(holder.getAdapterPosition()));
-                in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.startActivity(in);
-                //add intent ,open the fruit detail activty;
+            onItemClicked(mFruitList.get(holder.getAdapterPosition()));
             }
         });
     }
+    /*
+    can be overwrite when extents ,
+    extent to shop activity,and my_fragment
+     */
+    protected void onItemClicked(Fruit fr){
+        Log.d(TAG, "onClick: click"+fr.name);
+        Intent in = getIntent2FruitshopActivity
+                (mContext,fr);
+        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.startActivity(in);
+        //add intent ,open the fruit detail activty;
+    }
+
+    public static Intent getIntent2FruitshopActivity(Context context,Fruit clickedFruit){
+        //intent to "buy_fruit_activity"
+        Intent in = new Intent(context,FruitShopActivity.class);
+        in.putExtra("clickedFruit",clickedFruit);
+        return in;
+    }
+    public interface AdapterReadyListenner{
+        void onAdapterReady();
+    }
+    public void setOnAdapterReadyListenner(AdapterReadyListenner ARL){
+
+        mARl = ARL;
+    }
+
+
     @Override
     public int getItemCount(){
         return mFruitList.size();

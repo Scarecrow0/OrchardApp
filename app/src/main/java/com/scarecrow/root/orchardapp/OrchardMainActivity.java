@@ -12,8 +12,6 @@ import java.util.List;
 
 /**
  * Created by root on 17-8-11.
- * todo  ticket_list --- orchard_list from server
- * todo  event_list  --- user from server
  */
 
 public class OrchardMainActivity extends AppCompatActivity {

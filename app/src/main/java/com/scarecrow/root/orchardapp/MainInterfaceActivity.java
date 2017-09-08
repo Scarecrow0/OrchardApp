@@ -31,6 +31,7 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     public static String Server_ip = "http://47.94.227.86:8080/appserver";
     public static UserInfo logined_usr = new UserInfo();
     public static boolean isLogin = false;
+    public static OrchardInfoSingle TheOrchard = new OrchardInfoSingle();
     public static OrchardEvent orchardEvent = new OrchardEvent();
     public static boolean isGetEventList = false;
     @Override

@@ -25,10 +25,12 @@
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:text="@string/jinriyouxuanshuiguo"
+               android:textColor="#000000"
                android:textSize="20sp" />
            <android.support.v7.widget.RecyclerView
                android:layout_width="match_parent"
                android:background="#FFFFFF"
+               android:padding="10dp"
                android:layout_height="wrap_content"
                android:id="@+id/discover_recview_recmdfrt">
            </android.support.v7.widget.RecyclerView>

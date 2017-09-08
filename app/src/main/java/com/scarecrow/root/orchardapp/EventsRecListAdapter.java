@@ -68,12 +68,23 @@ public class EventsRecListAdapter extends RecyclerView.Adapter<EventsRecListAdap
         holder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent in = getIntent2EventDetailActivity
-                        (mContext.get(),mEventList.get(holder.getAdapterPosition()) );
-                in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                mContext.get().startActivity(in);
+
+                onItemClicked(mEventList.get(holder.getAdapterPosition()));
+
             }
         });
+    }
+    /*
+    can be overwrite when extents ,
+    extent to shop activity,and my_fragment
+    */
+    protected void onItemClicked(OrchardEvent oe){
+        Log.d(TAG, "onClick: click"+oe.name);
+        Intent in = getIntent2EventDetailActivity
+                (mContext.get(),oe);
+        in.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        mContext.get().startActivity(in);
+        //add intent ,open the fruit detail activty;
     }
     @Override
     public int getItemCount(){
@@ -115,14 +126,16 @@ public class EventsRecListAdapter extends RecyclerView.Adapter<EventsRecListAdap
             if(joined_booklist.get(i).getMfirst().equals(event_item.name)){
                 usr_event_state = joined_booklist.get(i);
                 Log.d(TAG, "append_finish_state: get user event state" + usr_event_state);
-                String event_state ;
+                String event_state,EventJoinedDate ;
                 if (usr_event_state.getMnext().charAt(0) == 'a'){
-                    event_state = "状态:未完成, 参加活动时间: "
-                            + usr_event_state.getMnext().substring(1);
-                }else
-                    event_state = "状态:已完成, 参加活动时间: "
-                            + usr_event_state.getMnext().substring(1);
+                    event_state = "状态:未完成";
+                    EventJoinedDate = "参加活动时间: " + usr_event_state.getMnext().substring(1);
+                }else {
+                    event_state = "状态:已完成";
+                    EventJoinedDate = "参加活动时间: " + usr_event_state.getMnext().substring(1);
+                }
                 event_item.bref = event_state;
+                event_item.date = EventJoinedDate;
                 newEvnetList.add(event_item);
             }
         }
