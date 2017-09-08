@@ -14,7 +14,7 @@ public class OrchardDetailActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle bundle){
         super.onCreate(bundle);
-        setContentView(R.layout.orchard_detail_activity);
+        setContentView(R.layout.activity_orchard_detail);
 
         adsBanner = (AdsBanner)  findViewById(R.id.orchard_detail_banner);
         new BannerLoader().bannerPreparing(5,adsBanner,this);

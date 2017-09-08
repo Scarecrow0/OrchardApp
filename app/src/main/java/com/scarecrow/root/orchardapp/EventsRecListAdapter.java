@@ -27,34 +27,23 @@ import static android.content.ContentValues.TAG;
 public class EventsRecListAdapter extends RecyclerView.Adapter<EventsRecListAdapter.ViewHolder> {
     private List<OrchardEvent> mEventList;
     private WeakReference<Context> mContext;
-    private static Intent getIntent2EventDetailActivity(Context context, OrchardEvent clickedEvent){
-        Intent in = new Intent(context,EventDetailActivity.class);
-        in.putExtra("clickedEvent",clickedEvent);
-        return in;
-    }
+    private List<OrchardEvent> newEvnetList;
 
     public EventsRecListAdapter (Context context){
         mContext = new WeakReference<Context>(context);
         mEventList = new ArrayList<>();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
-        TextView name,bref,date;
-        ImageView image;
-        View item ;
-        public ViewHolder(View view){
-            super(view);
-            name = view.findViewById(R.id.event_item_name);
-            bref = view.findViewById(R.id.event_item_bref);
-            date = view.findViewById(R.id.event_occur_orchard_n_date);
-            image = view.findViewById(R.id.event_item_image);
-            item = view;
-        }
+    private static Intent getIntent2EventDetailActivity(Context context, OrchardEvent clickedEvent) {
+        Intent in = new Intent(context, EventDetailActivity.class);
+        in.putExtra("clickedEvent", clickedEvent);
+        return in;
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.event_list_item,parent,false);
+                .inflate(R.layout.item_event_list, parent, false);
         return new ViewHolder(view);
     }
 
@@ -97,7 +86,6 @@ public class EventsRecListAdapter extends RecyclerView.Adapter<EventsRecListAdap
         mEventList = eventlist;
         notifyDataSetChanged();
     }
-    private List<OrchardEvent> newEvnetList ;
 
     public void updateDatabyUInfo(UserInfo uinfo,List<OrchardEvent> oe_list){
         List<String> joinedUserList;
@@ -140,5 +128,20 @@ public class EventsRecListAdapter extends RecyclerView.Adapter<EventsRecListAdap
             }
         }
 
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        TextView name, bref, date;
+        ImageView image;
+        View item;
+
+        public ViewHolder(View view) {
+            super(view);
+            name = view.findViewById(R.id.event_item_name);
+            bref = view.findViewById(R.id.event_item_bref);
+            date = view.findViewById(R.id.event_occur_orchard_n_date);
+            image = view.findViewById(R.id.event_item_image);
+            item = view;
+        }
     }
 }

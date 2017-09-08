@@ -27,25 +27,13 @@ public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtLi
             mTicketList = MainInterfaceActivity.logined_usr.TicketboughtList;
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView mTicketImage;
-        TextView mTicketName,mTicketEstTime,mTicketAmount;
-        public ViewHolder(View view){
-            super(view);
-            mTicketImage = view.findViewById(R.id.ticket_list_image);
-            mTicketName = view.findViewById(R.id.ticket_list_orchname);
-            mTicketEstTime  = view.findViewById(R.id.ticket_list_esttime);
-            mTicketAmount = view.findViewById(R.id.ticket_list_tourist_amount);
-
-        }
-
-    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.ticket_list_item_layout,parent,false);
+                .inflate(R.layout.item_ticket_list, parent, false);
         return new ViewHolder(view);
     }
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mTicketName.setText("园区基本门票");
@@ -59,6 +47,7 @@ public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtLi
                 .setText(appendTicketState(mTicketList.get(position).getMnext()));
 
     }
+
     @Override
     public int getItemCount(){
         return mTicketList.size();
@@ -78,6 +67,21 @@ public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtLi
     public void updataData(List<StringPair> TicketBoughtList){
         mTicketList = TicketBoughtList;
         notifyDataSetChanged();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView mTicketImage;
+        TextView mTicketName, mTicketEstTime, mTicketAmount;
+
+        public ViewHolder(View view) {
+            super(view);
+            mTicketImage = view.findViewById(R.id.ticket_list_image);
+            mTicketName = view.findViewById(R.id.ticket_list_orchname);
+            mTicketEstTime = view.findViewById(R.id.ticket_list_esttime);
+            mTicketAmount = view.findViewById(R.id.ticket_list_tourist_amount);
+
+        }
+
     }
 
 }

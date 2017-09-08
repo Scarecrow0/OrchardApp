@@ -14,7 +14,7 @@ public class EmptyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup,
                              Bundle saveInstanceState) {
-        View v = inflater.inflate(R.layout.empty_fragment, viewgroup, false);
+        View v = inflater.inflate(R.layout.fragment_empty, viewgroup, false);
         return v;
 
     }

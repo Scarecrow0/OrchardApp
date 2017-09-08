@@ -14,14 +14,14 @@
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <application
+        android:name=".LeakDetecter"
         android:allowBackup="true"
-        android:icon="@mipmap/app_icon"
+        android:icon="@mipmap/icon_guoyouxuan"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/app_icon"
+        android:roundIcon="@mipmap/icon_guoyouxuan"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
 
-        android:name=".LeakDetecter">
+        android:theme="@style/AppTheme">
 
 
         <activity android:name=".MainInterfaceActivity">

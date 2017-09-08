@@ -20,15 +20,17 @@ import android.widget.Toast;
 
 public class OrchardSingleActivity extends AppCompatActivity {
 
-
+    PlaceInfoSingle mOchardInfo;
     NumberPicker mBookingAmmountPicker,mBookingDateMonthPicker,mBookingDateDayPicker;
     @Override
     public void onCreate(Bundle onSaveInstanceState){
         super.onCreate(onSaveInstanceState);
-        setContentView(R.layout.orchard_single_activity);
+        setContentView(R.layout.activity_orchard_single);
+        mOchardInfo = (PlaceInfoSingle) getIntent().getSerializableExtra("OrchardInfo");
+        int bannernum = new Integer(mOchardInfo.orch_bannernum);
         new BannerLoader()
                 .bannerPreparing
-                        (5,(AdsBanner)findViewById(R.id.orchard_single_banner),getBaseContext());
+                        (bannernum, (AdsBanner) findViewById(R.id.orchard_single_banner), getBaseContext());
         mBookingAmmountPicker = (NumberPicker) findViewById(R.id.booking_count);
         mBookingDateMonthPicker = (NumberPicker) findViewById(R.id.booking_month);
         mBookingDateDayPicker = (NumberPicker) findViewById(R.id.booking_day);
@@ -38,13 +40,13 @@ public class OrchardSingleActivity extends AppCompatActivity {
         mBookingDateDayPicker.setMaxValue(30);
         mBookingAmmountPicker.setMaxValue(50);
         TextView tv_ = (TextView) findViewById(R.id.orchard_ticket_price);
-        tv_.setText(MainInterfaceActivity.TheOrchard.ticket_price + "￥");
+        tv_.setText(mOchardInfo.ticket_price + "￥");
         tv_ = (TextView) findViewById(R.id.orchard_single_name);
-        tv_.setText(MainInterfaceActivity.TheOrchard.orc_name);
+        tv_.setText(mOchardInfo.orc_name);
         tv_ = (TextView) findViewById(R.id.orchard_rules);
-        tv_.setText(MainInterfaceActivity.TheOrchard.orc_rules);
+        tv_.setText(mOchardInfo.orc_rules);
         tv_ = (TextView) findViewById(R.id.orchard_ticket_remain);
-        tv_.setText("剩余可入园人数 :"+MainInterfaceActivity.TheOrchard.ticket_remain);
+        tv_.setText("剩余可入园人数 :" + mOchardInfo.ticket_remain);
 
 
         LinearLayout ll = (LinearLayout) findViewById(R.id.orchard_intro_button);
@@ -52,7 +54,7 @@ public class OrchardSingleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getBaseContext(),OrchardDetailActivity.class);
-                in.putExtra("info",MainInterfaceActivity.TheOrchard.orch_info);
+                in.putExtra("info", mOchardInfo.orch_info);
                 startActivity(in);
             }
         });
@@ -60,7 +62,7 @@ public class OrchardSingleActivity extends AppCompatActivity {
         ll.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getBaseContext(),MainInterfaceActivity.TheOrchard.pos_url,Toast.LENGTH_LONG)
+                Toast.makeText(getBaseContext(), mOchardInfo.pos_url, Toast.LENGTH_LONG)
                         .show();
             }
         });
@@ -69,7 +71,6 @@ public class OrchardSingleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 /*
-                TODO link up with server  booking count,booking date,
                  0 -> ammount 1 -> date
                  */
 
@@ -82,14 +83,19 @@ public class OrchardSingleActivity extends AppCompatActivity {
                 String ammount = String.valueOf(mBookingAmmountPicker.getValue());
                 String date = String.valueOf(mBookingDateMonthPicker.getValue())
                         + "-" + String.valueOf(mBookingDateDayPicker.getValue());
-                String[] params = new String[]{ammount,date};
+                String[] params = new String[]{ammount, date, mOchardInfo.orc_name};
                 new BookingTicket().execute(params);
-
-
 
             }
         });
 
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        AdsBanner ab = (AdsBanner) findViewById(R.id.orchard_single_banner);
+        ab.onDestory();
     }
 
     private class BookingTicket extends AsyncTask<String,Void,String>{
@@ -102,13 +108,11 @@ public class OrchardSingleActivity extends AppCompatActivity {
                 Log.d(TAG, "doInBackground: booking ticket url : "
                             +MainInterfaceActivity.Server_ip+"/app/booking_ticket" +
                             "& username="+MainInterfaceActivity.logined_usr.username+
-                                "amount="+params[0]+"est_date="+params[1]);
+                        "amount=" + params[0] + "est_date=" + params[1] + "orch_name=" + params[2]);
 
                 res = sc.getURLString(MainInterfaceActivity.Server_ip+"/app/booking_ticket",
                             "username="+MainInterfaceActivity.logined_usr.username+
-                            "&amount="+params[0]+"&est_date="+params[1]);
-
-
+                                    "&amount=" + params[0] + "&est_date=" + params[1] + "&orch_name=" + params[2]);
                 /*
                 result code
                         0  fine
@@ -157,13 +161,6 @@ public class OrchardSingleActivity extends AppCompatActivity {
 
 
 
-    }
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        AdsBanner ab = (AdsBanner) findViewById(R.id.orchard_single_banner);
-        ab.onDestory();
     }
 
 }

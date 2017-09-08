@@ -7,10 +7,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/buttongreen"
         android:gravity="center"
         android:text="@string/zhuce"
-        android:textSize="40sp"
-        android:background="@color/buttongreen"/>
+        android:textSize="40sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,17 +21,17 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
+            android:gravity="center"
             android:text="@string/yonghuming"
-            android:textSize="25sp"
-            android:gravity="center"/>
+            android:textSize="25sp" />
 
         <LinearLayout
             android:layout_width="20dp"
@@ -51,8 +51,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
 
 
@@ -80,8 +80,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
 
         <TextView
@@ -109,8 +109,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -134,8 +134,8 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -163,16 +163,16 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <Button
+            android:id="@+id/register_confirm_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/zhuce"
             android:layout_gravity="center"
-            android:id="@+id/register_confirm_button"/>
+            android:text="@string/zhuce" />
     </LinearLayout>
     <TextView
+        android:id="@+id/register_state_output"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:id="@+id/register_state_output"
         android:textColor="@color/colorAccent"
         android:textSize="25sp"/>
 

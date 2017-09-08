@@ -28,7 +28,7 @@ public class EventDetailActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle onSaveinstanteState){
         super.onCreate(onSaveinstanteState);
-        setContentView(R.layout.event_detail_activity_layout);
+        setContentView(R.layout.activity_event_detail);
         Intent in = getIntent();
         mEventBanner = (AdsBanner)findViewById(R.id.event_banner);
         or = (OrchardEvent) in.getSerializableExtra("clickedEvent");
@@ -48,7 +48,7 @@ public class EventDetailActivity extends AppCompatActivity {
         ListView lv = (ListView) findViewById(R.id.event_joineduser_list);
         ArrayAdapter<String> arrayAdapter
                 = new ArrayAdapter<String>
-                            (getBaseContext(),R.layout.user_list_item_layout,or.joineduser);
+                (getBaseContext(), R.layout.item_user_list, or.joineduser);
         lv.setAdapter(arrayAdapter);
         Button bt = (Button) findViewById(R.id.event_join_button);
         bt.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +71,24 @@ public class EventDetailActivity extends AppCompatActivity {
         };
 
     }
+
+    private boolean check_joined(OrchardEvent oe) {
+        List<StringPair> user_joined = MainInterfaceActivity.logined_usr.EventjoinedList;
+        for (int i = 0; i < user_joined.size(); i++) {
+            if (user_joined.get(i).getMfirst().equals(oe.name)
+                    && user_joined.get(i).getMnext().equals((oe.date))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mEventBanner.onDestory();
+    }
+
     private class join_event extends AsyncTask<Void,Void,Void>{
         @Override
         protected Void doInBackground(Void...params){
@@ -93,22 +111,6 @@ public class EventDetailActivity extends AppCompatActivity {
         protected void onPostExecute(Void param){
             after_join.obtainMessage().sendToTarget();
         }
-    }
-
-    private boolean check_joined(OrchardEvent oe){
-        List<StringPair> user_joined = MainInterfaceActivity.logined_usr.EventjoinedList;
-        for (int i = 0;i < user_joined.size();i++){
-            if (user_joined.get(i).getMfirst().equals(oe.name)
-                    &&user_joined.get(i).getMnext().equals((oe.date))){
-                return true;
-            }
-        }
-        return false;
-    }
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        mEventBanner.onDestory();
     }
 
 }

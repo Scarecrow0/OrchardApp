@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="top">
+    android:layout_gravity="top"
+    android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:background="@color/buttongreen"
+        android:gravity="center"
         android:paddingBottom="5dp"
+        android:paddingTop="5dp"
         android:text="@string/chishuiguo"
         android:textColor="#000000"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:background="@color/buttongreen" />
+        android:textSize="25sp" />
 
 
     <com.scarecrow.root.orchardapp.AdsBanner
+        android:id="@+id/fruit_banner"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:id="@+id/fruit_banner">
+        android:layout_height="200dp">
 
     </com.scarecrow.root.orchardapp.AdsBanner>
     <LinearLayout
@@ -30,9 +30,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingStart="15dp"
         android:text="@string/dangjihaoshuiguo"
         android:textColor="#000000"
-        android:paddingStart="15dp"
         android:textSize="20sp"/>
 
     <LinearLayout
@@ -43,34 +43,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/paixuefangshi"
-            android:paddingStart="10dp"
-            android:textSize="12sp"
+            android:layout_weight="0.21"
             android:gravity="center_vertical"
-            android:layout_weight="0.21" />
+            android:paddingStart="10dp"
+            android:text="@string/paixuefangshi"
+            android:textSize="12sp" />
         <Button
+            android:id="@+id/fruit_list_sortby_all"
             android:layout_width="69dp"
             android:layout_height="match_parent"
-            android:text="@string/zonghezuigao"
-            android:textSize="12sp"
+            android:layout_weight="0.07"
             android:gravity="left"
-            android:id="@+id/fruit_list_sortby_all"
-            android:layout_weight="0.07" />
+            android:text="@string/zonghezuigao"
+            android:textSize="12sp" />
         <Button
+            android:id="@+id/fruit_list_sortby_hot"
             android:layout_width="70dp"
             android:layout_height="match_parent"
-            android:text="@string/xiaoliangzuijia"
-            android:id="@+id/fruit_list_sortby_hot"
-            android:textSize="12sp"
+            android:layout_weight="0.03"
             android:gravity="left"
-            android:layout_weight="0.03" />
+            android:text="@string/xiaoliangzuijia"
+            android:textSize="12sp" />
         <Button
+            android:id="@+id/fruit_list_sortby_rating"
             android:layout_width="72dp"
             android:layout_height="match_parent"
+            android:gravity="left"
             android:text="@string/zuixingshangshi"
-            android:id="@+id/fruit_list_sortby_rating"
-            android:textSize="12sp"
-            android:gravity="left"/>
+            android:textSize="12sp" />
 
     </LinearLayout>
     <LinearLayout

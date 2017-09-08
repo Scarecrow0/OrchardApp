@@ -28,7 +28,7 @@ public class FruitMainActivity extends AppCompatActivity implements Button.OnCli
             @Override
             public void handleMessage(Message msg) {
                 LinearLayoutManager layoutManager = new LinearLayoutManager(mc);
-                setContentView(R.layout.fruit_main_activity_layout);
+                setContentView(R.layout.activity_fruit_main);
                 final RecyclerView rv = (RecyclerView) findViewById(R.id.fruit_list);
                 ab = (AdsBanner) findViewById(R.id.fruit_banner);
                 new BannerLoader().bannerPreparing(3,ab,mc);
@@ -55,7 +55,7 @@ public class FruitMainActivity extends AppCompatActivity implements Button.OnCli
     @Override
     public void onDestroy(){
         super.onDestroy();
-        setContentView(R.layout.empty_fragment);
+        setContentView(R.layout.fragment_empty);
         if(ab != null)
             ab.onDestory();
         UIupdate.removeCallbacksAndMessages(null);

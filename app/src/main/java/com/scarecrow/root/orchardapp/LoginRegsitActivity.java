@@ -15,7 +15,7 @@ public class LoginRegsitActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle onSaveInstanceState){
         super.onCreate(onSaveInstanceState);
-        setContentView(R.layout.loginregist_activity_layout);
+        setContentView(R.layout.activity_loginregist);
         LoginFragment lf = new LoginFragment();
         lf.setOnFragmentChangeListenner(new LoginFragment.OnFragmentChangeRequestListenner() {
             @Override

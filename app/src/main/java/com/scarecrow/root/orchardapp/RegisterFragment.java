@@ -24,13 +24,15 @@ import static android.content.ContentValues.TAG;
  */
 
 public class RegisterFragment extends Fragment {
+    private final List<String> input_infolist = new ArrayList<>();
     private View mfragmentview;
     private List<EditText> mInput_ET;
-    private final List<String> input_infolist = new ArrayList<>();
+    private OnLoginSuccessListenner mLoginSuccessListenner;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup,
                              Bundle saveInstanceState) {
-        final View v = inflater.inflate(R.layout.registerfragment_layout, viewgroup, false);
+        final View v = inflater.inflate(R.layout.fragment_register, viewgroup, false);
         mfragmentview = v;
         mInput_ET = new ArrayList<>();
         mInput_ET.add((EditText)v.findViewById(R.id.register_username_input));
@@ -68,6 +70,11 @@ public class RegisterFragment extends Fragment {
         });
         return v;
     }
+
+    public void setLoginSuccessListenner(OnLoginSuccessListenner ofcrl) {
+        mLoginSuccessListenner = ofcrl;
+    }
+
     private class registerUploader extends AsyncTask<List<String>,Void,Boolean>{
         String mresult;
         JSONObject jsonObject;
@@ -117,10 +124,5 @@ public class RegisterFragment extends Fragment {
                         .show();
             }
         }
-    }
-
-    private OnLoginSuccessListenner mLoginSuccessListenner;
-    public void setLoginSuccessListenner(OnLoginSuccessListenner ofcrl){
-        mLoginSuccessListenner = ofcrl;
     }
 }

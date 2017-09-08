@@ -10,40 +10,40 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/buttongreen"
-            android:text="@string/yunquxinxi"
             android:gravity="center"
+            android:text="@string/yunquxinxi"
             android:textSize="25sp"/>
         <TextView
+            android:id="@+id/orchard_single_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:textSize="25sp"
-            android:id="@+id/orchard_single_name"/>
+            android:textSize="25sp" />
 
         <com.scarecrow.root.orchardapp.AdsBanner
+            android:id="@+id/orchard_single_banner"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:id="@+id/orchard_single_banner">
+            android:layout_height="150dp">
         </com.scarecrow.root.orchardapp.AdsBanner>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#FFFFFF">
+            android:background="#FFFFFF"
+            android:orientation="horizontal">
             <LinearLayout
+                android:id="@+id/orchard_intro_button"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:orientation="horizontal"
                 android:layout_weight="1"
                 android:background="@color/buttongreen"
-                android:id="@+id/orchard_intro_button">
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_weight="1"
                     android:layout_height="match_parent"
-                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:text="@string/yuanqujianjie"
-                    android:gravity="center"/>
+                    android:textSize="20sp" />
 
                 <ImageView
                     android:id="@+id/imageView2"
@@ -53,20 +53,20 @@
                     android:src="@drawable/bump_icon_forinfo" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/orchard_pos_button"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
-                android:orientation="horizontal"
                 android:layout_marginLeft="5dp"
                 android:layout_weight="1"
                 android:background="@color/buttongreen"
-                android:id="@+id/orchard_pos_button">
+                android:orientation="horizontal">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:textSize="20sp"
-                    android:text="@string/yuanquweizhi"
+                    android:layout_weight="1"
                     android:gravity="center"
-                    android:layout_weight="1"/>
+                    android:text="@string/yuanquweizhi"
+                    android:textSize="20sp" />
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="match_parent"
@@ -79,9 +79,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="price"
             android:padding="5dp"
             android:paddingStart="10dp"
+            android:text="price"
             android:textColor="@color/colorAccent"
             android:textSize="30sp" />
 
@@ -90,9 +90,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="start"
-            android:text="remain"
-            android:paddingStart="10dp"
             android:padding="5dp"
+            android:paddingStart="10dp"
+            android:text="remain"
             android:textColor="#000000"
             android:textSize="18sp" />
         <LinearLayout
@@ -104,18 +104,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="end"
+            android:orientation="horizontal"
             android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ruyuanrenshu"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="@string/ruyuanrenshu" />
             <NumberPicker
+                android:id="@+id/booking_count"
                 android:layout_width="50dp"
-                android:layout_height="45dp"
-                android:id="@+id/booking_count">
+                android:layout_height="45dp">
 
             </NumberPicker>
 
@@ -123,37 +123,37 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_gravity="end"
+            android:orientation="horizontal"
             android:padding="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ruyuanshijian"
+                android:layout_gravity="center"
                 android:paddingRight="15dp"
-                android:layout_gravity="center"/>
+                android:text="@string/ruyuanshijian" />
 
             <NumberPicker
+                android:id="@+id/booking_month"
                 android:layout_width="50dp"
-                android:layout_height="45dp"
-                android:id="@+id/booking_month">
+                android:layout_height="45dp">
             </NumberPicker>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/yue_month"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="@string/yue_month" />
 
             <NumberPicker
+                android:id="@+id/booking_day"
                 android:layout_width="50dp"
-                android:layout_height="45dp"
-                android:id="@+id/booking_day">
+                android:layout_height="45dp">
             </NumberPicker>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/ri"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                android:text="@string/ri" />
 
         </LinearLayout>
 
@@ -163,16 +163,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="@string/yuyue"
+            android:background="@color/buttongreen"
             android:padding="15dp"
-            android:background="@color/buttongreen"/>
+            android:text="@string/yuyue" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:textSize="15sp"
             android:text="@string/boughtnotice"
-            android:textColor="#000000"/>
+            android:textColor="#000000"
+            android:textSize="15sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -185,17 +185,17 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/ruyuanxuzhi"
             android:padding="10dp"
-            android:textSize="20sp"
-            android:textColor="#000000"/>
+            android:text="@string/ruyuanxuzhi"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <TextView
+            android:id="@+id/orchard_rules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:textColor="#000000"
             android:padding="13dp"
-            android:id="@+id/orchard_rules"/>
+            android:textColor="#000000"
+            android:textSize="15sp" />
     </LinearLayout>
 </ScrollView>

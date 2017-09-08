@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -14,16 +14,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/buttongreen"
-                android:text="@string/zhangshangdaoyou"
                 android:gravity="center"
+                android:text="@string/zhangshangdaoyou"
                 android:textSize="25sp"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textColor="#000000"
                 android:paddingStart="20dp"
-                android:text="@string/yuanquditu"/>
+                android:text="@string/yuanquditu"
+                android:textColor="#000000"
+                android:textSize="20sp" />
             <!-- this is divider  -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -31,10 +31,10 @@
                 android:background="@color/lightgray">
             </LinearLayout>
             <com.scarecrow.root.orchardapp.MapDisplayView
+                android:id="@+id/map_display"
                 android:layout_width="800px"
                 android:layout_height="800px"
-                android:layout_gravity="center"
-                android:id="@+id/map_display"/>
+                android:layout_gravity="center" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="2dp"
@@ -43,20 +43,20 @@
         <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
                 <Button
+                    android:id="@+id/start_update_pos"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:text="@string/kaishidingwei"
-                    android:id="@+id/start_update_pos"/>
+                    android:text="@string/kaishidingwei" />
                 <Button
-                    android:layout_marginLeft="50dp"
-                    android:text="@string/zantingdingwei"
+                    android:id="@+id/stpo_update_pos"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:id="@+id/stpo_update_pos"/>
+                    android:layout_marginLeft="50dp"
+                    android:text="@string/zantingdingwei" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -73,8 +73,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingStart="20dp"
-                    android:textColor="#000000"
                     android:text="@string/yuanqudangqianqingkuang"
+                    android:textColor="#000000"
                     android:textSize="20sp"/>
                 <!-- this is divider  -->
                 <LinearLayout
@@ -85,16 +85,16 @@
 
                 <!-- for debug -->
                 <TextView
+                    android:id="@+id/loc_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="12sp"
-                    android:id="@+id/loc_info"/>
+                    android:textSize="12sp" />
                 <!-- for debug -->
 
                 <TextView
+                    android:id="@+id/curr_orch_info"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/curr_orch_info"
                     android:textSize="15sp"/>
             </LinearLayout>
 
@@ -106,10 +106,10 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="推荐任务"
                 android:paddingStart="20dp"
-                android:textColor="#000000"/>
+                android:text="推荐任务"
+                android:textColor="#000000"
+                android:textSize="20sp" />
             <!-- this is divider  -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -118,11 +118,11 @@
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/recommd_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recommd_event"
-                android:padding="10dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp">
 
             </android.support.v7.widget.RecyclerView>
 

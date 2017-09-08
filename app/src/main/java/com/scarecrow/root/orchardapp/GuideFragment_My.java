@@ -25,14 +25,15 @@ import static android.app.Activity.RESULT_OK;
 public class GuideFragment_My extends Fragment {
     private final static String ALBUM_PATH
             = Environment.getExternalStorageDirectory() + "/download_test/";
+    private static int request_code = 0;
     RecyclerView RV_boughtFruitList,RV_boughtticketList,RV_joinedEvent;
     private View mfragmentview;
-    private static int request_code = 0 ;
+
     //always try to login
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup,
                              Bundle saveInstanceState) {
-        final View v = inflater.inflate(R.layout.guide_fragment_my, viewgroup, false);
+        final View v = inflater.inflate(R.layout.fragment_guide_my, viewgroup, false);
         mfragmentview = v;
         TextView loginLL =  v.findViewById(R.id.loginreg_interface_button);
         RV_boughtFruitList = v.findViewById(R.id.fruit_bought_list);
@@ -46,7 +47,6 @@ public class GuideFragment_My extends Fragment {
         layoutManager = new LinearLayoutManager(getContext());
         RV_boughtticketList.setLayoutManager(layoutManager);
 
-        //TODO ticket booking  ,Adapter
 
         FruitListAdapterUserInfo fra = new FruitListAdapterUserInfo(getContext());
         RV_boughtFruitList.addItemDecoration(new DividerItemDecoration(getContext(),1));

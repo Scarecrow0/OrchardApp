@@ -36,6 +36,13 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         mContext = context;
     }
 
+    public static Intent getIntent2FruitshopActivity(Context context, Fruit clickedFruit) {
+        //intent to "buy_fruit_activity"
+        Intent in = new Intent(context, FruitShopActivity.class);
+        in.putExtra("clickedFruit", clickedFruit);
+        return in;
+    }
+
     public void setmFruitList(){
         Fruit fr = new Fruit();
         fr.setOnProcessCompleteListener(new Fruit.ProcessCompleteListener() {
@@ -49,23 +56,10 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         fr.loadFruitList();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView fruitImage;
-        TextView fruitName,fruitBref,fruitPrice;
-        View fruitItem;
-        public ViewHolder(View view){
-            super(view);
-            fruitItem = view;
-            fruitImage = (ImageView) view.findViewById(R.id.fruit_item_image);
-            fruitName = (TextView) view.findViewById(R.id.fruit_item_name);
-            fruitBref = (TextView) view.findViewById(R.id.fruit_item_text);
-            fruitPrice = (TextView) view.findViewById(R.id.fruit_item_price);
-        }
-    }
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,int viewType){
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fruit_item,parent,false);
+                .inflate(R.layout.item_fruit_list, parent, false);
         return new ViewHolder(view);
     }
     @Override
@@ -104,20 +98,10 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         //add intent ,open the fruit detail activty;
     }
 
-    public static Intent getIntent2FruitshopActivity(Context context,Fruit clickedFruit){
-        //intent to "buy_fruit_activity"
-        Intent in = new Intent(context,FruitShopActivity.class);
-        in.putExtra("clickedFruit",clickedFruit);
-        return in;
-    }
-    public interface AdapterReadyListenner{
-        void onAdapterReady();
-    }
     public void setOnAdapterReadyListenner(AdapterReadyListenner ARL){
 
         mARl = ARL;
     }
-
 
     @Override
     public int getItemCount(){
@@ -158,5 +142,24 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         notifyDataSetChanged();
         //when recycleview's items changes, need to call this function
         //to refresh list
+    }
+
+    public interface AdapterReadyListenner {
+        void onAdapterReady();
+    }
+
+    static class ViewHolder extends RecyclerView.ViewHolder {
+        ImageView fruitImage;
+        TextView fruitName, fruitBref, fruitPrice;
+        View fruitItem;
+
+        public ViewHolder(View view) {
+            super(view);
+            fruitItem = view;
+            fruitImage = (ImageView) view.findViewById(R.id.fruit_item_image);
+            fruitName = (TextView) view.findViewById(R.id.fruit_item_name);
+            fruitBref = (TextView) view.findViewById(R.id.fruit_item_text);
+            fruitPrice = (TextView) view.findViewById(R.id.fruit_item_price);
+        }
     }
 }

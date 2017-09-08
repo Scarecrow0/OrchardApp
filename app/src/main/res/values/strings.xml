@@ -44,7 +44,6 @@
     <string name="yuding">预定</string>
     <string name="yuyue">预约</string>
     <string name="shenyupiaoshu">剩余可入园人数:</string>
-    <string name="guoyuanhuodong">果园活动</string>
     <string name="shuiguojianjie">水果简介</string>
     <string name="ruyuanrenshu">入园人数</string>
     <string name="ruyuanshijian">预定入园时间:   </string>
@@ -55,5 +54,7 @@
     <string name="yuanqudangqianqingkuang">园区当前情况</string>
     <string name="kaishidingwei">开始定位</string>
     <string name="zantingdingwei">暂停定位</string>
+    <string name="zhoubianyou">周边游</string>
+    <string name="guoyuanhuodong">果园活动</string>
     <string name="boughtnotice"> 用户须知:\n \t\t该操作仅为预定该商品,工作人员将会在预定后与您联系确认购买信息(水果:送货或自取,园区门票:园区具体情况),并提供支付办法;为了您能及时收到商品,请确保您注册所留联系方式有效!</string>
 </resources>

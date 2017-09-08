@@ -19,7 +19,7 @@ public class OrchardMainActivity extends AppCompatActivity {
     private RecyclerView mEventRv;
     public void onCreate(Bundle onSaveInstanceState){
         super.onCreate(onSaveInstanceState);
-        setContentView(R.layout.orchard_main_activity_layout);
+        setContentView(R.layout.activity_orchard_main);
         new BannerLoader()
                 .bannerPreparing(2,(AdsBanner) findViewById(R.id.orchard_banner),this);
         mEventRv = (RecyclerView) findViewById(R.id.event_list);
@@ -46,6 +46,7 @@ public class OrchardMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent in = new Intent(getBaseContext(),OrchardSingleActivity.class);
+                in.putExtra("OrchardInfo", MainInterfaceActivity.TheOrchard);
                 startActivity(in);
             }
         });

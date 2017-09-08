@@ -16,12 +16,15 @@ import android.widget.Toast;
  */
 
 public class LoginFragment extends Fragment {
-    private View mfragmentview;
     UserInfo muinfo;
+    private View mfragmentview;
+    private OnFragmentChangeRequestListenner mFragmentChangeListenner;
+    private OnLoginSuccessListenner mLoginSuccessListenner;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup,
                              Bundle saveInstanceState) {
-        final View v = inflater.inflate(R.layout.loginfragment_layout, viewgroup, false);
+        final View v = inflater.inflate(R.layout.fragment_login, viewgroup, false);
         mfragmentview = v;
         Button loginBt = (Button) v.findViewById(R.id.login_button);
         Button regsiterBt = v.findViewById(R.id.regsiter_button);
@@ -57,18 +60,18 @@ public class LoginFragment extends Fragment {
         return v;
     }
 
-    private OnFragmentChangeRequestListenner mFragmentChangeListenner;
-    public interface OnFragmentChangeRequestListenner{
-        void onFragmentChangeRequest();
-    }
     public void setOnFragmentChangeListenner(OnFragmentChangeRequestListenner ofcrl){
         mFragmentChangeListenner = ofcrl;
     }
 
-    private OnLoginSuccessListenner mLoginSuccessListenner;
     public void setLoginSuccessListenner(OnLoginSuccessListenner ofcrl){
         mLoginSuccessListenner = ofcrl;
     }
+
+    public interface OnFragmentChangeRequestListenner {
+        void onFragmentChangeRequest();
+    }
+
     private class UserInfoUpdaterLogin extends UserInfoUpdater{
         @Override
         protected void onPostExecute(String mresult){

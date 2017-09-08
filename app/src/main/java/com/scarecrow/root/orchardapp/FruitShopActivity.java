@@ -27,7 +27,7 @@ public class FruitShopActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.fruit_shop_activity);
+        setContentView(R.layout.activity_fruit_shop);
         Intent in = getIntent();
         ab = (AdsBanner)findViewById(R.id.fruitshop_banner);
         fr = (Fruit) in.getSerializableExtra("clickedFruit");
@@ -77,32 +77,6 @@ public class FruitShopActivity extends AppCompatActivity {
         });
     }
 
-    private class buyFruitUploader extends AsyncTask<Void,Void,Void>{
-        String feedback_str;
-        //update usr info
-        @Override
-        protected Void doInBackground(Void...params){
-            //usr info update
-            try {
-                Log.d("TAG", "doInBackground( buy fruit): buying :"
-                        + fr.name + buy_num + MainInterfaceActivity.logined_usr.username);
-
-                feedback_str = new ServerContacter().getURLString
-                        (MainInterfaceActivity.Server_ip+"/app/buy_fruit",
-                                "fruitname=" + fr.name + "&amount=" + buy_num +
-                                "&username=" + MainInterfaceActivity.logined_usr.username);
-                Log.d("TAG", "doInBackground(buy fruit): feedback : " + feedback_str);
-                processJSON(feedback_str);
-            } catch (Exception ee) {
-                Log.d("", "onClick: buy fruit " + ee);
-            }
-            return  null;
-        }
-        protected void onPostExecute(Void params){
-
-        }
-
-    }
     private void processJSON(String jsonstr){
         if (jsonstr.equals("1")){
             Toast.makeText
@@ -128,12 +102,42 @@ public class FruitShopActivity extends AppCompatActivity {
         handler.obtainMessage(0,jsonstr).sendToTarget();
 
     }
+
     @Override
     public void onDestroy(){
         super.onDestroy();
-        setContentView(R.layout.empty_fragment);
+        setContentView(R.layout.fragment_empty);
         buyer.cancel(false);
         if(ab != null)
             ab.onDestory();
+    }
+
+    private class buyFruitUploader extends AsyncTask<Void, Void, Void> {
+        String feedback_str;
+
+        //update usr info
+        @Override
+        protected Void doInBackground(Void... params) {
+            //usr info update
+            try {
+                Log.d("TAG", "doInBackground( buy fruit): buying :"
+                        + fr.name + buy_num + MainInterfaceActivity.logined_usr.username);
+
+                feedback_str = new ServerContacter().getURLString
+                        (MainInterfaceActivity.Server_ip + "/app/buy_fruit",
+                                "fruitname=" + fr.name + "&amount=" + buy_num +
+                                        "&username=" + MainInterfaceActivity.logined_usr.username);
+                Log.d("TAG", "doInBackground(buy fruit): feedback : " + feedback_str);
+                processJSON(feedback_str);
+            } catch (Exception ee) {
+                Log.d("", "onClick: buy fruit " + ee);
+            }
+            return null;
+        }
+
+        protected void onPostExecute(Void params) {
+
+        }
+
     }
 }

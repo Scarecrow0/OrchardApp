@@ -40,7 +40,7 @@ public class LBSGuideActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle onSaveInstanceState) {
         super.onCreate(onSaveInstanceState);
-        setContentView(R.layout.lbs_activity_layout);
+        setContentView(R.layout.activity_lbs);
         mapDisplay = (MapDisplayView) findViewById(R.id.map_display);
         mapDisplay.init_canvas(1);
 
@@ -204,6 +204,13 @@ public class LBSGuideActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapDisplay.onDestroy();
+        mLocationClient.onDestroy();
+    }
+
     private class lbs_request extends AsyncTask<Double, Void, String> {
         @Override
         protected String doInBackground(Double... params) {
@@ -246,12 +253,6 @@ public class LBSGuideActivity extends AppCompatActivity {
             return str;
         }
 
-    }
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapDisplay.onDestroy();
-        mLocationClient.onDestroy();
     }
 
 }

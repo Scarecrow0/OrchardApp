@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="top">
+    android:gravity="top"
+    android:orientation="vertical">
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="vertical">
        <com.scarecrow.root.orchardapp.AdsBanner
+           android:id="@+id/discover_banner"
            android:layout_width="match_parent"
-           android:layout_height="160dp"
-           android:id="@+id/discover_banner">
+           android:layout_height="160dp">
        </com.scarecrow.root.orchardapp.AdsBanner>
 
        <LinearLayout
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:background="@color/lightgray"
            android:orientation="vertical"
            android:paddingBottom="12dp"
-           android:paddingTop="12dp"
-           android:background="@color/lightgray">
+           android:paddingTop="12dp">
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
@@ -28,11 +28,11 @@
                android:textColor="#000000"
                android:textSize="20sp" />
            <android.support.v7.widget.RecyclerView
+               android:id="@+id/discover_recview_recmdfrt"
                android:layout_width="match_parent"
-               android:background="#FFFFFF"
-               android:padding="10dp"
                android:layout_height="wrap_content"
-               android:id="@+id/discover_recview_recmdfrt">
+               android:background="#FFFFFF"
+               android:padding="10dp">
            </android.support.v7.widget.RecyclerView>
 
        </LinearLayout>

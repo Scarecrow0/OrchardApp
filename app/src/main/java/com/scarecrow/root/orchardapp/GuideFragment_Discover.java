@@ -17,7 +17,7 @@ public class GuideFragment_Discover extends Fragment implements Button.OnClickLi
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup,
                              Bundle saveInstanceState){
-        View v = inflater.inflate(R.layout.guide_fragment_discover,viewgroup,false);
+        View v = inflater.inflate(R.layout.fragment_guide_discover, viewgroup, false);
         AdsBanner adsBanner = v.findViewById(R.id.discover_banner);
         new BannerLoader().bannerPreparing(1,adsBanner,getContext());
         final RecyclerView rcmFruitList

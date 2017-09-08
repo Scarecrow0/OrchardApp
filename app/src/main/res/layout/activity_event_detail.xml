@@ -10,12 +10,12 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:text="@string/guoyuanhuodong"
-            android:textSize="25sp"
+            android:background="@color/buttongreen"
             android:gravity="center"
-            android:background="@color/buttongreen" />
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:text="@string/guoyuanhuodong"
+            android:textSize="25sp" />
 
 
 
@@ -35,10 +35,10 @@
                 android:id="@+id/event_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="name"
-                android:textColor="#000000"
                 android:padding="10dp"
                 android:paddingStart="15dp"
+                android:text="name"
+                android:textColor="#000000"
                 android:textSize="30sp" />
 
             <TextView
@@ -46,8 +46,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
-                android:text="target"
                 android:paddingEnd="15dp"
+                android:text="target"
                 android:textColor="@color/colorAccent"
                 android:textSize="25sp" />
 
@@ -67,10 +67,10 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
                 android:padding="10dp"
-                android:text="happened orchard and date"
-                android:textSize="20sp"
                 android:paddingEnd="10dp"
-                android:textColor="#000000"/>
+                android:text="happened orchard and date"
+                android:textColor="#000000"
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -80,11 +80,11 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/event_bref"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/event_bref"
-                android:textColor="#000000"
                 android:padding="15dp"
+                android:textColor="#000000"
                 android:textSize="25sp" />
         </LinearLayout>
 
@@ -99,8 +99,8 @@
             android:id="@+id/event_longintro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#000000"
             android:padding="15dp"
+            android:textColor="#000000"
             android:textSize="25sp" />
 
         <LinearLayout
@@ -113,16 +113,16 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/canjiahuodongdeyonghu"
-            android:textSize="25sp"
             android:padding="15dp"
-            android:textColor="#000000"/>
+            android:text="@string/canjiahuodongdeyonghu"
+            android:textColor="#000000"
+            android:textSize="25sp" />
 
         <ListView
             android:id="@+id/event_joineduser_list"
             android:layout_width="match_parent"
-            android:padding="15dp"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="15dp">
 
         </ListView>
 
