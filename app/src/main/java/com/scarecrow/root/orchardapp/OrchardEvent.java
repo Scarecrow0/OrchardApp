@@ -73,7 +73,7 @@ public class OrchardEvent implements Serializable{
                 String str_res = new ServerContacter()
                         .getURLString(request_url
                                         ,"currorchard="+ MainInterfaceActivity.logined_usr.currorchard);
-                Log.d(TAG, "doInBackground: get_Event List jsonback str" );
+                Log.d(TAG, "doInBackground: get_Event List jsonback str" + str_res );
                 if(str_res != null){
                     processJSON(str_res);
                 }

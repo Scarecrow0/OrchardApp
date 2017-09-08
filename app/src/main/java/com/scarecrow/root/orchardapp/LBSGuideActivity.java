@@ -12,7 +12,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,39 +28,50 @@ import java.util.List;
 
 /**
  * Created by root on 17-8-15.
- * TODO location update ,link up with server
  */
 
 public class LBSGuideActivity extends AppCompatActivity {
-    MapDisplayView mapDisplay ;
-    EditText et_ornum,et_posx,et_posy;
-
+    private static String TAG = "In LBS_Service";
     //声明AMapLocationClient类对象
     public AMapLocationClient mLocationClient = null;
+    private MapDisplayView mapDisplay;
+    private RecyclerView best_event_rv;
 
-    private static String TAG = "In LBS_Service";
     @Override
     public void onCreate(Bundle onSaveInstanceState) {
         super.onCreate(onSaveInstanceState);
         setContentView(R.layout.lbs_activity_layout);
         mapDisplay = (MapDisplayView) findViewById(R.id.map_display);
-        Button bt = (Button) findViewById(R.id.update_pos);
+        mapDisplay.init_canvas(1);
+
+        best_event_rv = (RecyclerView) findViewById(R.id.recommd_event);
+        RecyclerView.LayoutManager lm = new LinearLayoutManager(getBaseContext());
+        best_event_rv.setLayoutManager(lm);
+        best_event_rv.setAdapter(new EventsRecListAdapter(getBaseContext()));
+        Button bt = (Button) findViewById(R.id.start_update_pos);
+
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //todo : get the location info and draw dot
                 if (!MainInterfaceActivity.isLogin) {
                     Toast.makeText(getBaseContext(), "please login before use lbs"
                             , Toast.LENGTH_SHORT)
                             .show();
-                     return;
+                    return;
                 }
-
                 mLocationClient.startLocation();
                 // with out setting options , one clicked calls one locate;
             }
         });
-        mapDisplay.init_canvas(1);
+
+        bt = (Button) findViewById(R.id.stpo_update_pos);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mLocationClient.stopLocation();
+            }
+        });
+
         getPermission();
         //初始化定位
         mLocationClient = new AMapLocationClient(getApplicationContext());
@@ -72,157 +82,116 @@ public class LBSGuideActivity extends AppCompatActivity {
                 // update the location info on to android here;
                 String res = "";
                 Double[] params = new Double[]
-                        {   aMapLocation.getLongitude(),
-                                aMapLocation.getLatitude()   };
-
+                        {aMapLocation.getLongitude(),
+                                aMapLocation.getLatitude()};
                 res += ("longitude : " + String.valueOf(params[0]) + "\n");
-                res += ("latitude : " + String.valueOf(params[1]) + "\n") ;
-                res += ("loca_type : " +  String.valueOf(aMapLocation.getLocationType() + "\n"));
+                res += ("latitude : " + String.valueOf(params[1]) + "\n");
+                res += ("loca_type : " + String.valueOf(aMapLocation.getLocationType() + "\n"));
                 TextView tv = (TextView) findViewById(R.id.loc_info);
                 tv.setText(res);
-
                 new lbs_request().execute(params);
-                mLocationClient.stopLocation();
-
             }
         });
+
+
         AMapLocationClientOption mLocationOption = null;
         //初始化AMapLocationClientOption对象
         mLocationOption = new AMapLocationClientOption();
-        mLocationOption.setOnceLocation(true);
-        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Device_Sensors);
+        // 2s locate once
         mLocationOption.setLocationCacheEnable(false);
         mLocationClient.setLocationOption(mLocationOption);
 
     }
 
-
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        mapDisplay.onDestroy();
-        mLocationClient.onDestroy();
-    }
-
-    private class lbs_request extends AsyncTask<Double,Void,String>{
-        @Override
-        protected String doInBackground(Double...params){
-            String res_str = null;
-            try {
-                res_str = new ServerContacter()
-                        .getURLString(MainInterfaceActivity.Server_ip+"/app/lbs_request"
-                                ,"pos_x="+params[0]+"&pos_y="+params[1]+"&orchardnum="+1
-                                        +"&username="+ MainInterfaceActivity.logined_usr.username);
-            }catch (Exception ee){
-                Log.d("LBSGuideActivity", "doInBackground: error in lbs activity" + ee);
-            }
-            return res_str;
-         }
-         @Override
-        protected void onPostExecute(String params){
-             if(params == null) {
-                 Toast.makeText(getBaseContext(), "error in get coodnates!", Toast.LENGTH_SHORT)
-                         .show();
-                 return;
-             }
-             if(params.equals("coodination invaild")) {
-                 Toast.makeText(getBaseContext(), "invalid coodinates!", Toast.LENGTH_SHORT)
-                         .show();
-                return;
-             }
-             processJSON(params);
-         }
-    }
-    private List<Integer> mPartTouristCnt ;
-    private OrchardEvent bestEvent ;
-    private void processJSON(String jsonstr){
+    private void processJSON(String jsonstr) {
+        OrchardTouristCnt mPartTouristCnt;
         try {
             Log.d(TAG, "processJSON: get LBS res: " + jsonstr);
             JSONObject json_obj = new JSONObject(jsonstr);
-            //TODO process json , display all info , update dot position
 
             JSONArray jsonArray = json_obj.getJSONArray("tourist_cnt");
-            mPartTouristCnt = new ArrayList<>();
-            for (int i = 0 ;i < jsonArray.length();i++)
+            mPartTouristCnt = new OrchardTouristCnt();
+            for (int i = 0; i < jsonArray.length(); i++)
                 mPartTouristCnt.add(jsonArray.getInt(i));
-
+            //draw dot
             jsonArray = json_obj.getJSONArray("rv_coodi");
-            mapDisplay.drawDot(jsonArray.getInt(0),jsonArray.getInt(1));
-            String hasBestEvent = json_obj.getString("has_best_event");
-            String str = "";
-            str += "tourist_cnt: " + mPartTouristCnt.toString() + "\n";
-            str += "relv coodin: x: " + jsonArray.getInt(0)+ ",y: "+jsonArray.getInt(1) + "\n";
-            str += "curr_part: "+ json_obj.getString("partnum") + "\n";
+            mapDisplay.drawDot(jsonArray.getInt(0), jsonArray.getInt(1));
 
-            if(hasBestEvent.equals("yes")) {
+            //display orchard status
+
+            String str = "";
+            str += mPartTouristCnt.toString() ;
+            str += "当前所在园区  : 园区" + json_obj.getString("partnum") + "\n";
+            str += "//debug \n relative coordinate: x: " + jsonArray.getInt(0) + ",y: " + jsonArray.getInt(1) + "\n";
+
+
+            String hasBestEvent = json_obj.getString("has_best_event");
+            //show best event
+            OrchardEvent bestEvent;
+            if (hasBestEvent.equals("yes")) {
                 bestEvent = new OrchardEvent()
                         .parserEachEventJSON(json_obj.getJSONObject("best_event"));
                 str += "best event : " + bestEvent.name + "\n";
-                RecyclerView best_event_rv =(RecyclerView) findViewById(R.id.recommd_event);
-                RecyclerView.LayoutManager  lm = new LinearLayoutManager(getBaseContext());
-                best_event_rv.setLayoutManager(lm);
-                best_event_rv.setAdapter(new EventsRecListAdapter(getBaseContext()));
                 EventsRecListAdapter eventsRecListAdapter
                         = (EventsRecListAdapter) best_event_rv.getAdapter();
                 List<OrchardEvent> list_or = new ArrayList<>();
                 list_or.add(bestEvent);
                 eventsRecListAdapter.updateData(list_or);
 
-            }else
+            } else
                 str += "best event : " + "None" + "\n";
             TextView tv = (TextView) findViewById(R.id.curr_orch_info);
             tv.setText(str);
-        }catch (Exception ee){
+        } catch (Exception ee) {
             Log.d("lbsActivity : ", "processJSON: errro : " + ee);
         }
 
     }
 
-
-
-    private void getPermission(){
+    private void getPermission() {
         List<String> permissionList = new ArrayList<>();
        /*
           // targetSdkVersion < Android M, we have to use PermissionChecker
                 result = PermissionChecker.checkSelfPermission(context, permission)
                 */
-        if(PermissionChecker.checkSelfPermission
+        if (PermissionChecker.checkSelfPermission
                 (getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             permissionList.add(Manifest.permission.ACCESS_FINE_LOCATION);
 
         }
         if (PermissionChecker.checkSelfPermission
-                (getApplicationContext(),Manifest.permission.READ_PHONE_STATE)
-                != PackageManager.PERMISSION_GRANTED){
+                (getApplicationContext(), Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
             permissionList.add(Manifest.permission.READ_PHONE_STATE);
 
         }
         if (PermissionChecker.checkSelfPermission
-                (getApplicationContext(),Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                != PackageManager.PERMISSION_GRANTED){
+                (getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
             permissionList.add(Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
-        if (! permissionList.isEmpty()){
-            String [] permissions = permissionList.toArray(new String[permissionList.size()]);
-            ActivityCompat.requestPermissions(this,permissions,1);
-        }else
-            Toast.makeText(getBaseContext(),"already get permissions"
-                    ,Toast.LENGTH_SHORT)
-            .show();
+        if (!permissionList.isEmpty()) {
+            String[] permissions = permissionList.toArray(new String[permissionList.size()]);
+            ActivityCompat.requestPermissions(this, permissions, 1);
+        } else
+            Toast.makeText(getBaseContext(), "already get permissions"
+                    , Toast.LENGTH_SHORT)
+                    .show();
 
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,String[] permissions
-                                            ,int[] grantResults){
-        switch (requestCode){
+
+    public void onRequestPermissionsResult(int requestCode, String[] permissions
+            , int[] grantResults) {
+        switch (requestCode) {
             case 1:
-                if(grantResults.length > 0){
-                    for(int result:grantResults){
-                        if(result != PackageManager.PERMISSION_GRANTED){
+                if (grantResults.length > 0) {
+                    for (int result : grantResults) {
+                        if (result != PackageManager.PERMISSION_GRANTED) {
                             Toast.makeText
-                                    (getBaseContext(),"have to gramted all permission",Toast.LENGTH_SHORT)
+                                    (getBaseContext(), "have to gramted all permission", Toast.LENGTH_SHORT)
                                     .show();
                             finish();
                             return;
@@ -234,4 +203,55 @@ public class LBSGuideActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    private class lbs_request extends AsyncTask<Double, Void, String> {
+        @Override
+        protected String doInBackground(Double... params) {
+            String res_str = null;
+            try {
+                res_str = new ServerContacter()
+                        .getURLString(MainInterfaceActivity.Server_ip + "/app/lbs_request"
+                                , "pos_x=" + params[0] + "&pos_y=" + params[1] + "&orchardnum=" + 1
+                                        + "&username=" + MainInterfaceActivity.logined_usr.username);
+            } catch (Exception ee) {
+                Log.d("LBSGuideActivity", "doInBackground: error in lbs activity" + ee);
+            }
+            return res_str;
+        }
+
+        @Override
+        protected void onPostExecute(String params) {
+            if (params == null) {
+                Toast.makeText(getBaseContext(), "error in get coodnates!", Toast.LENGTH_SHORT)
+                        .show();
+                return;
+            }
+            if (params.equals("coodination invaild")) {
+                Toast.makeText(getBaseContext(), "invalid coodinates!", Toast.LENGTH_SHORT)
+                        .show();
+                return;
+            }
+            processJSON(params);
+        }
+    }
+
+    private class OrchardTouristCnt extends ArrayList<Integer>{
+        @Override
+        public String toString(){
+            String str = "园区各区域人数 :";
+            for(int i = 0;i < this.size();i++){
+                str += "园区" + i+1 +": " + this.get(i) + ",";
+            }
+            str += "\n";
+            return str;
+        }
+
+    }
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mapDisplay.onDestroy();
+        mLocationClient.onDestroy();
+    }
+
 }

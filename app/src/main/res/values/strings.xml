@@ -22,7 +22,7 @@
     <string name="dizhi">地址</string>
     <string name="yue">余额</string>
     <string name="youhuidengji">优惠等级</string>
-    <string name="goumaishuliang">购买数量  : </string>
+    <string name="goumaishuliang">预定数量  : </string>
     <string name="chongzhi">充值</string>
     <string name="wodeweizhi">我的位置</string>
     <string name="yunquliebiao">园区列表</string>
@@ -50,4 +50,10 @@
     <string name="ruyuanshijian">预定入园时间:   </string>
     <string name="yue_month">月</string>
     <string name="ri">日</string>
+    <string name="lianxidianhuan">联系电话</string>
+    <string name="yuanquditu">园区地图</string>
+    <string name="yuanqudangqianqingkuang">园区当前情况</string>
+    <string name="kaishidingwei">开始定位</string>
+    <string name="zantingdingwei">暂停定位</string>
+    <string name="boughtnotice"> 用户须知:\n \t\t该操作仅为预定该商品,工作人员将会在预定后与您联系确认购买信息(水果:送货或自取,园区门票:园区具体情况),并提供支付办法;为了您能及时收到商品,请确保您注册所留联系方式有效!</string>
 </resources>

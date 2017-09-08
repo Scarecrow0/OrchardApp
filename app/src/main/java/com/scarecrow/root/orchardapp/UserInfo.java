@@ -16,7 +16,7 @@ import static android.content.ContentValues.TAG;
  */
 
 public class UserInfo implements Serializable{
-    public String username, address,currorchard,password;
+    public String username, address,currorchard,password,phonenumber;
     public int account, exp,curr_part;
     public List<StringPair> FruitboughtList = new ArrayList<>();
     //first is fruit name ,next is bought amount
@@ -33,9 +33,9 @@ public class UserInfo implements Serializable{
 
     public String toString() {
         return "用户名: " + username + "\n"
-                + "余额: " + account + '\n'
                 + "优惠等级: " + exp + '\n'
-                + "地址: " + address + '\n';
+                + "地址: " + address + '\n'
+                + "联系电话" + phonenumber + "\n";
     }
 
     public void setAll(String u, String ad,String or, int ac, int e) {
@@ -90,7 +90,6 @@ public class UserInfo implements Serializable{
             Log.e(TAG, "setEventjoinedListbyJSON: errro : " + ee);
         }
     }
-    //// TODO: 17-8-13  location update
 
 }
 

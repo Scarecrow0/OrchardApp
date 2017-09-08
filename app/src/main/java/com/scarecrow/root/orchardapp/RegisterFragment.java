@@ -37,6 +37,7 @@ public class RegisterFragment extends Fragment {
         mInput_ET.add((EditText)v.findViewById(R.id.register_password_input));
         mInput_ET.add((EditText)v.findViewById(R.id.register_password_confirm_input));
         mInput_ET.add((EditText)v.findViewById(R.id.register_address_input));
+        mInput_ET.add((EditText)v.findViewById(R.id.register_phonenum_input));
         Button regs_bt = v.findViewById(R.id.register_confirm_button);
         regs_bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +79,7 @@ public class RegisterFragment extends Fragment {
                 jsonObject.put("username",params[0].get(0));
                 jsonObject.put("password",params[0].get(1));
                 jsonObject.put("address",params[0].get(3));
+                jsonObject.put("phonenumber",params[0].get(4));
                 ServerContacter sc = new ServerContacter();
                 Log.d(TAG, "doInBackground: upload new userinfo " + jsonObject);
                 mresult = sc.getURLString(MainInterfaceActivity.Server_ip+"/app/register","userjson="+jsonObject.toString());
@@ -91,6 +93,7 @@ public class RegisterFragment extends Fragment {
                                 jsonObject.getString("currorchard"),
                                 jsonObject.getInt("account"),
                                 jsonObject.getInt("exp"));
+                uinfo.phonenumber = jsonObject.getString("phonenumber");
                 uinfo.password = jsonObject.getString("password");
                 uinfo.setFruitboughtListbyJSON(jsonObject.getJSONArray("boughtfruit"));
                 uinfo.setTicketboughtListbyJSON(jsonObject.getJSONArray("boughtticket"));

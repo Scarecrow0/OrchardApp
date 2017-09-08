@@ -3,44 +3,132 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="location_info"
-            android:textSize="12sp"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            android:id="@+id/loc_info"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/curr_orch_info"
-            android:textSize="15sp"/>
-
-        <android.support.v7.widget.RecyclerView
+        android:layout_height="wrap_content">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/recommd_event"
-            android:padding="10dp"
-            android:orientation="horizontal">
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/buttongreen"
+                android:text="@string/zhangshangdaoyou"
+                android:gravity="center"
+                android:textSize="25sp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:paddingStart="20dp"
+                android:text="@string/yuanquditu"/>
+            <!-- this is divider  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/lightgray">
+            </LinearLayout>
+            <com.scarecrow.root.orchardapp.MapDisplayView
+                android:layout_width="800px"
+                android:layout_height="800px"
+                android:layout_gravity="center"
+                android:id="@+id/map_display"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/lightgray">
+        </LinearLayout>
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center">
 
-        </android.support.v7.widget.RecyclerView>
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:text="@string/kaishidingwei"
+                    android:id="@+id/start_update_pos"/>
+                <Button
+                    android:layout_marginLeft="50dp"
+                    android:text="@string/zantingdingwei"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:id="@+id/stpo_update_pos"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/lightgray">
+            </LinearLayout>
 
-    </LinearLayout>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/update_pos"/>
-    <com.scarecrow.root.orchardapp.MapDisplayView
-        android:layout_width="1280px"
-        android:layout_height="1280px"
-        android:id="@+id/map_display"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="20dp"
+                    android:textColor="#000000"
+                    android:text="@string/yuanqudangqianqingkuang"
+                    android:textSize="20sp"/>
+                <!-- this is divider  -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/lightgray">
+                </LinearLayout>
+
+                <!-- for debug -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="12sp"
+                    android:id="@+id/loc_info"/>
+                <!-- for debug -->
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/curr_orch_info"
+                    android:textSize="15sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/lightgray">
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:text="推荐任务"
+                android:paddingStart="20dp"
+                android:textColor="#000000"/>
+            <!-- this is divider  -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/lightgray">
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recommd_event"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
+            </android.support.v7.widget.RecyclerView>
+
+
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
