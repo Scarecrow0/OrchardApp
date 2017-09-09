@@ -157,7 +157,7 @@ public class GuideFragment_My extends Fragment {
             super(context);
         }
         @Override
-        protected void onItemClicked(Fruit fr){
+        protected void onItemClicked(FruitsInfo fr) {
             return;
         }
     }

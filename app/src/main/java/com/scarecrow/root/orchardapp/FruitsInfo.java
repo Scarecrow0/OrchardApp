@@ -16,13 +16,16 @@ import static android.content.ContentValues.TAG;
  * Created by root on 17-8-6.
  */
 
-public class Fruit implements Serializable{
+public class FruitsInfo implements Serializable {
     public String image_url,price,name,bref,long_intro,stock_rest,boughtamount;
     public List<String> bannerimageList;
-    public  List<Fruit> FruitList ;
+    public List<FruitsInfo> FruitList;
     private  ProcessCompleteListener mPCListenner;
-    public Fruit(){}
-    public Fruit (Fruit fruit){
+
+    public FruitsInfo() {
+    }
+
+    public FruitsInfo(FruitsInfo fruit) {
         this.name = fruit.name;
         this.image_url = fruit.image_url;
         this.price = fruit.price;
@@ -36,7 +39,7 @@ public class Fruit implements Serializable{
     }
 
     public interface ProcessCompleteListener{
-        void onProcessComplete(List<Fruit> frlist);
+        void onProcessComplete(List<FruitsInfo> frlist);
     }
     public void setOnProcessCompleteListener(
             ProcessCompleteListener pcl){
@@ -44,11 +47,11 @@ public class Fruit implements Serializable{
     }
 
     public void loadFruitList(){
-        Fruitinfo getFruitinf = new Fruitinfo();
+        GETFruitinfo getFruitinf = new GETFruitinfo();
         getFruitinf.execute();
     }
 
-    private class Fruitinfo extends AsyncTask<Void,Void,Void> {
+    private class GETFruitinfo extends AsyncTask<Void, Void, Void> {
         String json_str;
         @Override
         protected Void doInBackground(Void...Params){
@@ -67,6 +70,7 @@ public class Fruit implements Serializable{
         protected void onPostExecute(Void param) {
             try {
                 mPCListenner.onProcessComplete(FruitList);
+                cancel(false);
             }catch (Exception ee){
                 Log.d(TAG, "onPostExecute: error in create json" + ee);
             }
@@ -74,12 +78,12 @@ public class Fruit implements Serializable{
         }
         private void processJSON(JSONArray jsonarr){
             try {
-                Fruit tmpfruit;
+                FruitsInfo tmpfruit;
                 JSONObject tmpjo;
                 JSONArray tmpja;
                 for(int i = 0;i < jsonarr.length();i++){
                     tmpjo = jsonarr.getJSONObject(i);
-                    tmpfruit = new Fruit();
+                    tmpfruit = new FruitsInfo();
                     tmpfruit.name = tmpjo.getString("name");
                     tmpfruit.bref = tmpjo.getString("bref");
                     tmpfruit.image_url = tmpjo.getString("image_url");

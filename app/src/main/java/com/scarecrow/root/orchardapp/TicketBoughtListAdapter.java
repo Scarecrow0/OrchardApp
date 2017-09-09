@@ -34,6 +34,7 @@ public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtLi
         return new ViewHolder(view);
     }
 
+    //   todo update ticket name
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mTicketName.setText("园区基本门票");

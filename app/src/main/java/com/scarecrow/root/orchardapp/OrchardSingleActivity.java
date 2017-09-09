@@ -21,6 +21,7 @@ import android.widget.Toast;
 public class OrchardSingleActivity extends AppCompatActivity {
 
     PlaceInfoSingle mOchardInfo;
+    AsyncTask mBookExecuter = new BookingTicket();
     NumberPicker mBookingAmmountPicker,mBookingDateMonthPicker,mBookingDateDayPicker;
     @Override
     public void onCreate(Bundle onSaveInstanceState){
@@ -83,8 +84,12 @@ public class OrchardSingleActivity extends AppCompatActivity {
                 String ammount = String.valueOf(mBookingAmmountPicker.getValue());
                 String date = String.valueOf(mBookingDateMonthPicker.getValue())
                         + "-" + String.valueOf(mBookingDateDayPicker.getValue());
-                String[] params = new String[]{ammount, date, mOchardInfo.orc_name};
-                new BookingTicket().execute(params);
+                String[] params = new String[]{ammount, date, mOchardInfo.orch_id};
+                Object[] objs = params;
+                if (mBookExecuter.isCancelled()) {
+                    mBookExecuter = new BookingTicket();
+                }
+                mBookExecuter.execute(objs);
 
             }
         });
@@ -93,26 +98,33 @@ public class OrchardSingleActivity extends AppCompatActivity {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
+        mBookExecuter.cancel(true);
         AdsBanner ab = (AdsBanner) findViewById(R.id.orchard_single_banner);
         ab.onDestory();
+        super.onDestroy();
     }
 
-    private class BookingTicket extends AsyncTask<String,Void,String>{
+    private class BookingTicket extends AsyncTask<String, Void, Void> {
         String TAG = "BookingTicket";
+        String res = null;
         @Override
-        protected String doInBackground(String...params){
-            String res  = null;
+        protected Void doInBackground(String... params) {
             try{
                 ServerContacter sc = new ServerContacter();
                 Log.d(TAG, "doInBackground: booking ticket url : "
                             +MainInterfaceActivity.Server_ip+"/app/booking_ticket" +
                             "& username="+MainInterfaceActivity.logined_usr.username+
                         "amount=" + params[0] + "est_date=" + params[1] + "orch_name=" + params[2]);
-
-                res = sc.getURLString(MainInterfaceActivity.Server_ip+"/app/booking_ticket",
-                            "username="+MainInterfaceActivity.logined_usr.username+
-                                    "&amount=" + params[0] + "&est_date=" + params[1] + "&orch_name=" + params[2]);
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("username=");
+                stringBuilder.append(MainInterfaceActivity.logined_usr.username);
+                stringBuilder.append("&amount=");
+                stringBuilder.append(params[0]);
+                stringBuilder.append("&est_date=");
+                stringBuilder.append(params[1]);
+                stringBuilder.append("&orch_id=");
+                stringBuilder.append(params[2]);
+                res = sc.getURLString(MainInterfaceActivity.Server_ip + "/app/booking_ticket", stringBuilder.toString());
                 /*
                 result code
                         0  fine
@@ -122,16 +134,16 @@ public class OrchardSingleActivity extends AppCompatActivity {
                  */
 
             }catch (Exception ee){
-
+                cancel(true);
                 Log.d(TAG, "doInBackground: error in booking upload : " + ee) ;
 
             }
 
-            return res;
+            return null;
         }
         @Override
-        protected void onPostExecute(String res){
-            if (res == null) {
+        protected void onPostExecute(Void param) {
+            if (res.equals("")) {
                 Toast.makeText
                         (getBaseContext(), "booked failed ,cause by connection error", Toast.LENGTH_SHORT)
                         .show();

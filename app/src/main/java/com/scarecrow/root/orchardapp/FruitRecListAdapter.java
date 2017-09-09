@@ -24,7 +24,7 @@ import static android.content.ContentValues.TAG;
  */
 
 public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapter.ViewHolder> {
-    private List<Fruit> mFruitList = new ArrayList<>();
+    private List<FruitsInfo> mFruitList = new ArrayList<>();
     private Context mContext;
     private AdapterReadyListenner mARl;
     private boolean isForBroughtList = false;
@@ -36,7 +36,7 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         mContext = context;
     }
 
-    public static Intent getIntent2FruitshopActivity(Context context, Fruit clickedFruit) {
+    public static Intent getIntent2FruitshopActivity(Context context, FruitsInfo clickedFruit) {
         //intent to "buy_fruit_activity"
         Intent in = new Intent(context, FruitShopActivity.class);
         in.putExtra("clickedFruit", clickedFruit);
@@ -44,10 +44,10 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
     }
 
     public void setmFruitList(){
-        Fruit fr = new Fruit();
-        fr.setOnProcessCompleteListener(new Fruit.ProcessCompleteListener() {
+        FruitsInfo fr = new FruitsInfo();
+        fr.setOnProcessCompleteListener(new FruitsInfo.ProcessCompleteListener() {
             @Override
-            public void onProcessComplete(List<Fruit> frlist) {
+            public void onProcessComplete(List<FruitsInfo> frlist) {
                 Log.d(TAG, "onProcessComplete: onProcessComplete trigged");
                 mFruitList = frlist;
                 mARl.onAdapterReady();
@@ -64,7 +64,7 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
     }
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position){
-        final Fruit fr = mFruitList.get(position);
+        final FruitsInfo fr = mFruitList.get(position);
         //load each item in holder(list item)
         //download image ..set text;
         if(!isForBroughtList)
@@ -89,7 +89,7 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
     can be overwrite when extents ,
     extent to shop activity,and my_fragment
      */
-    protected void onItemClicked(Fruit fr){
+    protected void onItemClicked(FruitsInfo fr) {
         Log.d(TAG, "onClick: click"+fr.name);
         Intent in = getIntent2FruitshopActivity
                 (mContext,fr);
@@ -120,17 +120,17 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
     public void updateFruitlistbyUserInfo(UserInfo Uinfo){
         isForBroughtList = true;
         List<StringPair> fruitboughtList = Uinfo.FruitboughtList;
-        List<Fruit> newFruitList = new ArrayList<>();
+        List<FruitsInfo> newFruitList = new ArrayList<>();
         String fruit_name;
         String bought_num;
-        Fruit iterFruitItem;
+        FruitsInfo iterFruitItem;
         for(int i = 0;i < fruitboughtList.size();i++){
             fruit_name = fruitboughtList.get(i).getMfirst();
             bought_num = fruitboughtList.get(i).getMnext();
             for (int j = 0;j < mFruitList.size();j++){
                 iterFruitItem = mFruitList.get(j);
                 if(iterFruitItem.name.equals(fruit_name)){
-                    iterFruitItem = new Fruit(mFruitList.get(j));
+                    iterFruitItem = new FruitsInfo(mFruitList.get(j));
                     iterFruitItem.boughtamount = bought_num;
                     newFruitList.add(iterFruitItem);
                     break;
@@ -156,10 +156,10 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         public ViewHolder(View view) {
             super(view);
             fruitItem = view;
-            fruitImage = (ImageView) view.findViewById(R.id.fruit_item_image);
-            fruitName = (TextView) view.findViewById(R.id.fruit_item_name);
-            fruitBref = (TextView) view.findViewById(R.id.fruit_item_text);
-            fruitPrice = (TextView) view.findViewById(R.id.fruit_item_price);
+            fruitImage = view.findViewById(R.id.fruit_item_image);
+            fruitName = view.findViewById(R.id.fruit_item_name);
+            fruitBref = view.findViewById(R.id.fruit_item_text);
+            fruitPrice = view.findViewById(R.id.fruit_item_price);
         }
     }
 }

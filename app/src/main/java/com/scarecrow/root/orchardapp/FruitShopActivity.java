@@ -19,7 +19,7 @@ import android.widget.Toast;
  */
 
 public class FruitShopActivity extends AppCompatActivity {
-    Fruit fr;
+    FruitsInfo fr;
     int buy_num;
     Handler handler;
     AdsBanner ab ;
@@ -30,7 +30,7 @@ public class FruitShopActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fruit_shop);
         Intent in = getIntent();
         ab = (AdsBanner)findViewById(R.id.fruitshop_banner);
-        fr = (Fruit) in.getSerializableExtra("clickedFruit");
+        fr = (FruitsInfo) in.getSerializableExtra("clickedFruit");
         new BannerLoader().
                 bannerPreparing
                         (fr.bannerimageList,ab,getBaseContext());
@@ -107,7 +107,7 @@ public class FruitShopActivity extends AppCompatActivity {
     public void onDestroy(){
         super.onDestroy();
         setContentView(R.layout.fragment_empty);
-        buyer.cancel(false);
+        buyer.cancel(true);
         if(ab != null)
             ab.onDestory();
     }
@@ -135,9 +135,6 @@ public class FruitShopActivity extends AppCompatActivity {
             return null;
         }
 
-        protected void onPostExecute(Void params) {
-
-        }
 
     }
 }

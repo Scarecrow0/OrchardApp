@@ -37,6 +37,7 @@ public class SurroundPlaces extends PlaceInfoSingle {
         @Override
         protected void onPostExecute(JSONArray jsonArray) {
             try {
+                Log.d(TAG, "onPostExecute:  GETSurrPlace jsonarray is : " + jsonArray);
                 PlaceInfoSingle elem;
                 for (int i = 1; i < jsonArray.length(); i++) {
                     elem = new PlaceInfoSingle(false);

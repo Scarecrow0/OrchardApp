@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import static android.content.ContentValues.TAG;
 
@@ -73,7 +74,6 @@ public class OrchardEvent implements Serializable{
                 String str_res = new ServerContacter()
                         .getURLString(request_url
                                         ,"currorchard="+ MainInterfaceActivity.logined_usr.currorchard);
-                Log.d(TAG, "doInBackground: get_Event List jsonback str" + str_res );
                 if(str_res != null){
                     processJSON(str_res);
                 }
@@ -89,6 +89,7 @@ public class OrchardEvent implements Serializable{
         protected void onPostExecute(Void param){
 
             mERL.onEventListReady(mEventList);
+            cancel(false);
         }
 
         private void processJSON(String json_str) throws JSONException{
@@ -100,6 +101,14 @@ public class OrchardEvent implements Serializable{
 
         }
 
+    }
+
+    public void randomKickEventListItem() {
+        Random rm = new Random(100);
+        for (int i = 0; i < rm.nextInt(5); i++) {
+            int index = rm.nextInt(50);
+            mEventList.remove(index % mEventList.size());
+        }
     }
 
 

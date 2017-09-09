@@ -26,7 +26,8 @@ public class PlaceInfoSingle implements Serializable {
             orch_info,
             orch_bannernum,
             orch_img_url,
-            orch_bref;
+            orch_bref,
+            orch_id;
     PlaceInfoSingle this_ = this;
 
 
@@ -47,7 +48,8 @@ public class PlaceInfoSingle implements Serializable {
         elem.orch_info = jsonobj.getString("orch_info");
         elem.orch_img_url = jsonobj.getString("orch_imgurl");
         elem.orch_bref = jsonobj.getString("orch_bref");
-        elem.orch_bannernum = jsonobj.getString("orch_bannernum");
+        elem.orch_bannernum = jsonobj.getString("orch_banner_num");
+        elem.orch_id = jsonobj.getString("orch_id");
 
     }
 
@@ -61,7 +63,6 @@ public class PlaceInfoSingle implements Serializable {
                 String res_str
                         = sc.getURLString(MainInterfaceActivity.Server_ip + "/app/get_orchard_info", "");
                 json_arr = new JSONArray(res_str);
-                Log.d(TAG, "doInBackground: get Place info json : " + res_str);
             } catch (Exception ee) {
                 Log.d("", "doInBackground: error in : " + ee);
             }

@@ -7,6 +7,7 @@ import com.squareup.leakcanary.RefWatcher;
 
 /**
  * Created by root on 17-8-10.
+ *
  */
 
 public class LeakDetecter extends Application {
