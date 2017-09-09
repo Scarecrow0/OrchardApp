@@ -8,6 +8,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 
+import com.squareup.leakcanary.RefWatcher;
+
 import java.util.List;
 
 /**
@@ -30,7 +32,8 @@ public class OrchardMainActivity extends AppCompatActivity {
         mEventRv.addItemDecoration(new DividerItemDecoration(getBaseContext(),1));
         //dont forget set the LayoutManager
         mEventRv.setAdapter(new EventsRecListAdapter(this));
-
+        RefWatcher refWatcher = LeakDetecter.getRefWatcher(getApplication());
+        refWatcher.watch(this);
 
         OrchardEvent oe = new OrchardEvent();
         oe.setOnEventListReadyListener(new OrchardEvent.onEventListReadyListener(){

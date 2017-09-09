@@ -21,7 +21,7 @@ import java.util.List;
 
 public class SurrdPlaceAdapter extends RecyclerView.Adapter<SurrdPlaceAdapter.ViewHolder> {
     Context mContext;
-    List<PlaceInfo> mPlaces = new ArrayList<>();
+    List<PlaceInfoSingle> mPlaces = new ArrayList<>();
 
     public SurrdPlaceAdapter(Context context) {
         super();
@@ -29,7 +29,7 @@ public class SurrdPlaceAdapter extends RecyclerView.Adapter<SurrdPlaceAdapter.Vi
 
     }
 
-    public void updateData(List<PlaceInfo> Places) {
+    public void updateData(List<PlaceInfoSingle> Places) {
         mPlaces = Places;
         notifyDataSetChanged();
     }

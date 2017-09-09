@@ -36,7 +36,7 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
         mContext = context;
     }
 
-    public static Intent getIntent2FruitshopActivity(Context context, FruitsInfo clickedFruit) {
+    private static Intent getIntent2FruitshopActivity(Context context, FruitsInfo clickedFruit) {
         //intent to "buy_fruit_activity"
         Intent in = new Intent(context, FruitShopActivity.class);
         in.putExtra("clickedFruit", clickedFruit);
@@ -50,7 +50,9 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
             public void onProcessComplete(List<FruitsInfo> frlist) {
                 Log.d(TAG, "onProcessComplete: onProcessComplete trigged");
                 mFruitList = frlist;
-                mARl.onAdapterReady();
+                notifyDataSetChanged();
+                if (mARl != null)
+                    mARl.onAdapterReady();
             }
         });
         fr.loadFruitList();

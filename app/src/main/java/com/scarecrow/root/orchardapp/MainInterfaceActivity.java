@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.leakcanary.RefWatcher;
+
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -32,6 +34,7 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     private int curr_page = 0;
     public static PlaceInfoSingle TheOrchard = new PlaceInfoSingle(true);
     public static OrchardEvent orchardEvent = new OrchardEvent();
+    public static SurroundPlaces surroundPlaces = new SurroundPlaces();
     public static boolean isGetEventList = false;
     List<Fragment> mFraList;
     TextView tv[];
@@ -44,7 +47,10 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
         String[] param  = new String[]{
                 "aaa123","aaa"
         };
+        RefWatcher refWatcher = LeakDetecter.getRefWatcher(getApplication());
+        refWatcher.watch(this);
         new AutoLogin().execute(param);
+        surroundPlaces.updatePlacesData();
 
         mFraList = new ArrayList<>();
         //init guide bar buttoms
@@ -130,14 +136,11 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     }
 
     @Override
-    public void onStop() {
-
-        Log.d(TAG, "MainInterface onStop: ");
-        super.onStop();
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "MainInterface onPause: ");
         cleanFragment();
-
     }
-
     @Override
     public void onRestart() {
         super.onRestart();

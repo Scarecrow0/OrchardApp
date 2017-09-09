@@ -20,7 +20,7 @@ public class UserInfo implements Serializable{
     public int account, exp,curr_part;
     public List<StringPair> FruitboughtList = new ArrayList<>();
     //first is fruit name ,next is bought amount
-    public List<StringPair> TicketboughtList = new ArrayList<>();
+    public List<String[]> TicketboughtList = new ArrayList<>();
     // first
     public List<StringPair> EventjoinedList = new ArrayList<>();
     // first is event name ,second is finish state and date ;
@@ -64,13 +64,14 @@ public class UserInfo implements Serializable{
         try{
             Log.d(TAG, "setTicketboughtListbyJSON: Ticket bought json : " + ticketjson);
             TicketboughtList.clear();
-            StringPair tmp_pair;
             JSONArray tmp_jobj;
             for (int i = 0;i < ticketjson.length();i++){
                 tmp_jobj = ticketjson.getJSONArray(i);
-                tmp_pair = new StringPair
-                        (tmp_jobj.getString(0),tmp_jobj.getString(1));
-                TicketboughtList.add(tmp_pair);
+                String[] str = new String[]{
+                        tmp_jobj.getString(0), tmp_jobj.getString(1), tmp_jobj.getString(2)
+                };
+
+                TicketboughtList.add(str);
             }
         }catch (Exception ee){
             Log.e(TAG, "setTicketboughtListbyJSON: " + ee );

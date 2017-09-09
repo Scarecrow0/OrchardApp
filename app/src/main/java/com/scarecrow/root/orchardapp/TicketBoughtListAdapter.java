@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtListAdapter.ViewHolder> {
-    private List<StringPair> mTicketList = new ArrayList<>();
+    private List<String[]> mTicketList = new ArrayList<>();
     private WeakReference<Context> mContext;
     public TicketBoughtListAdapter(Context context){
         mContext = new WeakReference<>(context);
@@ -37,15 +37,17 @@ public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtLi
     //   todo update ticket name
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
-        holder.mTicketName.setText("园区基本门票");
-        String str_tmp = "入园人数 : " + mTicketList.get(position).getMfirst();
+        String[] userinfo = mTicketList.get(position);
+        PlaceInfoSingle pis = MainInterfaceActivity.surroundPlaces.getPlaceInfoById(userinfo[2]);
+        holder.mTicketName.setText(pis.orc_name);
+        String str_tmp = "入园人数 : " + userinfo[0];
         holder.mTicketAmount
                 .setText(str_tmp);
         Picasso.with(mContext.get())
-                .load(MainInterfaceActivity.TheOrchard.orch_img_url)
+                .load(pis.orch_img_url)
                 .into(holder.mTicketImage);
         holder.mTicketEstTime
-                .setText(appendTicketState(mTicketList.get(position).getMnext()));
+                .setText(appendTicketState(userinfo[1]));
 
     }
 
@@ -65,7 +67,7 @@ public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtLi
 
     }
 
-    public void updataData(List<StringPair> TicketBoughtList){
+    public void updataData(List<String[]> TicketBoughtList) {
         mTicketList = TicketBoughtList;
         notifyDataSetChanged();
     }
