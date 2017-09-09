@@ -14,24 +14,24 @@ import android.view.ViewGroup;
 
 public class FragmentSurroundingTickets extends Fragment {
     View mView;
-    SurroundPlaces mSurrPlace;
+    PlacesSingleTon mSurrPlace;
     private RecyclerView RV_SurrdPlace;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup viewgroup,
                              Bundle saveInstanceState) {
         mView = inflater.inflate(R.layout.fragment_surrounding_tickets, viewgroup, false);
-        RV_SurrdPlace = (RecyclerView) mView.findViewById(R.id.recycleview_surrounding_tickets);
+        RV_SurrdPlace = mView.findViewById(R.id.recycleview_surrounding_tickets);
         RecyclerView.LayoutManager lm = new LinearLayoutManager(getContext());
         RV_SurrdPlace.addItemDecoration(new DividerItemDecoration(getContext(), 1));
         RV_SurrdPlace.setLayoutManager(lm);
         RV_SurrdPlace.setAdapter(new SurrdPlaceAdapter(getContext()));
-        mSurrPlace = new SurroundPlaces();
-        mSurrPlace.setOnPlacesListReadyListener(new SurroundPlaces.OnPlacesListReadyListener() {
+        PlacesSingleTon.getInstance();
+        mSurrPlace.setOnPlacesListReadyListener(new PlacesSingleTon.OnPlacesListReadyListener() {
             @Override
             public void onPlacesListReady() {
                 SurrdPlaceAdapter spa = (SurrdPlaceAdapter) RV_SurrdPlace.getAdapter();
-                spa.updateData(mSurrPlace.mPlaces);
+                spa.updateData(PlacesSingleTon.getInstance().getDataForSurrdPlace());
             }
         });
         mSurrPlace.updatePlacesData();

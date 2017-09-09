@@ -21,7 +21,7 @@ import java.util.List;
 
 public class SurrdPlaceAdapter extends RecyclerView.Adapter<SurrdPlaceAdapter.ViewHolder> {
     Context mContext;
-    List<PlaceInfoSingle> mPlaces = new ArrayList<>();
+    List<PlaceInfo> mPlaces = new ArrayList<>();
 
     public SurrdPlaceAdapter(Context context) {
         super();
@@ -29,7 +29,7 @@ public class SurrdPlaceAdapter extends RecyclerView.Adapter<SurrdPlaceAdapter.Vi
 
     }
 
-    public void updateData(List<PlaceInfoSingle> Places) {
+    public void updateData(List<PlaceInfo> Places) {
         mPlaces = Places;
         notifyDataSetChanged();
     }
@@ -72,11 +72,11 @@ public class SurrdPlaceAdapter extends RecyclerView.Adapter<SurrdPlaceAdapter.Vi
 
         public ViewHolder(View view) {
             super(view);
-            PlaceName = (TextView) view.findViewById(R.id.place_item_name);
-            PlaceBref = (TextView) view.findViewById(R.id.place_item_bref);
-            PlaceImage = (ImageView) view.findViewById(R.id.place_item_image);
-            PlaceRemain = (TextView) view.findViewById(R.id.place_item_remain);
-            Item = (LinearLayout) view.findViewById(R.id.place_item_layout);
+            PlaceName = view.findViewById(R.id.place_item_name);
+            PlaceBref = view.findViewById(R.id.place_item_bref);
+            PlaceImage = view.findViewById(R.id.place_item_image);
+            PlaceRemain = view.findViewById(R.id.place_item_remain);
+            Item = view.findViewById(R.id.place_item_layout);
         }
     }
 }
