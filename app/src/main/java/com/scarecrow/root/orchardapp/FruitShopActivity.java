@@ -55,7 +55,7 @@ public class FruitShopActivity extends AppCompatActivity {
                 MainInterfaceActivity.logined_usr = MainInterfaceActivity.UpdateUInfobyJSONstr((String)msg.obj);
                 Toast.makeText
                         (getBaseContext(),
-                                "successfully bought !", Toast.LENGTH_LONG)
+                                "预定水果成功 !", Toast.LENGTH_LONG)
                         .show();
                 finish();
             }
@@ -68,7 +68,7 @@ public class FruitShopActivity extends AppCompatActivity {
                 if (!MainInterfaceActivity.isLogin) {
                     Toast.makeText
                             (getBaseContext(),
-                                    "please login before you buy things", Toast.LENGTH_LONG)
+                                    "请登录后购买水果", Toast.LENGTH_LONG)
                             .show();
                     return;
                 }
@@ -88,14 +88,14 @@ public class FruitShopActivity extends AppCompatActivity {
         if (jsonstr.equals("2")){
             Toast.makeText
                     (getBaseContext(),
-                            "doesn't have enough fruit stock", Toast.LENGTH_LONG)
+                            "水果库存不足 ", Toast.LENGTH_LONG)
                     .show();
             return;
         }
         if (jsonstr.equals("None")){
             Toast.makeText
                     (getBaseContext(),
-                            "buy failed ", Toast.LENGTH_LONG)
+                            "预定失败", Toast.LENGTH_LONG)
                     .show();
             return;
         }

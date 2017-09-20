@@ -9,11 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.squareup.leakcanary.RefWatcher;
 
 import org.json.JSONObject;
 
@@ -37,7 +35,7 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     public static SurroundPlaces surroundPlaces = new SurroundPlaces();
     public static boolean isGetEventList = false;
     List<Fragment> mFraList;
-    TextView tv[];
+    ImageView iv[];
 
 
     @Override
@@ -47,9 +45,7 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
         String[] param  = new String[]{
                 "aaa123","aaa"
         };
-        RefWatcher refWatcher = LeakDetecter.getRefWatcher(getApplication());
-        refWatcher.watch(this);
-        new AutoLogin().execute(param);
+        //new AutoLogin().execute(param);
         surroundPlaces.updatePlacesData();
 
         mFraList = new ArrayList<>();
@@ -58,10 +54,10 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
                 (LinearLayout) findViewById(R.id.zhuyebuttom),
                 (LinearLayout) findViewById(R.id.faxianbuttom),
                 (LinearLayout) findViewById(R.id.wodebuttom)};
-        tv = new TextView[]{
-                (TextView) findViewById(R.id.zhuye_tv),
-                (TextView) findViewById(R.id.faxian_tv),
-                (TextView) findViewById(R.id.wode_tv) };
+        iv = new ImageView[]{
+                (ImageView) findViewById(R.id.zhuye_bar),
+                (ImageView) findViewById(R.id.fanxian_bar),
+                (ImageView) findViewById(R.id.wode_bar)};
 
         for (int i = 0; i < 3; i++) {
             ll[i].setOnClickListener(this);
@@ -71,6 +67,7 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
         mFraList.add(new GuideFragment_Discover());
         mFraList.add(new GuideFragment_My());
         initFragment();
+
     }
 
     @Override
@@ -105,8 +102,8 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
         curr_page = fragment;
         transaction.commit();
         for (int i = 0; i < 3; i++)
-            tv[i].setTextColor(Color.BLACK);
-        tv[fragment].setTextColor(Color.WHITE);
+            iv[i].setBackgroundColor(Color.WHITE);
+        iv[fragment].setBackgroundColor(getResources().getColor(R.color.buttom_bar_blue));
 
     }
 
@@ -119,7 +116,7 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
         transaction.hide(mFraList.get(0));
         transaction.hide(mFraList.get(1));
         transaction.hide(mFraList.get(2));
-        tv[0].setTextColor(Color.WHITE);
+        iv[0].setBackgroundColor(getResources().getColor(R.color.buttom_bar_blue));
         transaction.show(mFraList.get(0));
         curr_page = 0;
         transaction.commitAllowingStateLoss();
@@ -139,12 +136,12 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     public void onPause() {
         super.onPause();
         Log.d(TAG, "MainInterface onPause: ");
-        cleanFragment();
+        //       cleanFragment();
     }
     @Override
     public void onRestart() {
         super.onRestart();
-        initFragment();
+        //     initFragment();
         Log.d(TAG, "MainInterface onStart: ");
     }
 
@@ -152,7 +149,7 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     public void onResume() {
         super.onResume();
         //   initFragment();
-        changeFragment(curr_page);
+        //      changeFragment(curr_page);
     }
 
     @Override

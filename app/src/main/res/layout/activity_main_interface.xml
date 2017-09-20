@@ -16,35 +16,6 @@
             android:layout_weight="1">
     </LinearLayout>
 
-        <TextView
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="5"
-            android:gravity="center"
-            android:text="@string/guoyouxuan"
-            android:textSize="35sp" />
-        <LinearLayout
-            android:id="@+id/message_box_button"
-            android:layout_width="1dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="bottom"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="33dp"
-                android:layout_height="29dp"
-                android:layout_gravity="center"
-                android:background="@drawable/message_icon"/>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/xiaoxi"
-                android:textSize="13sp" />
-        </LinearLayout>
-
-
     </LinearLayout>
     <fragment
         android:id="@+id/guide_fragment"
@@ -57,8 +28,8 @@
     <!--guide bar-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/buttongreen"
+        android:layout_height="40dp"
+        android:background="#ffffff"
         android:orientation="horizontal">
         <LinearLayout
             android:id="@+id/zhuyebuttom"
@@ -69,20 +40,16 @@
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:layout_marginTop="2dp"
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
-                android:src="@drawable/house_home" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/b_1" />
 
-            <TextView
-                android:id="@+id/zhuye_tv"
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:gravity="center"
-                android:text="@string/zhuye"
-                android:textAlignment="center"
-                android:textSize="15sp" />
-
+                android:layout_height="5dp"
+                android:id="@+id/zhuye_bar" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="1dp"
@@ -95,18 +62,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
+            android:layout_marginTop="2dp"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
-                android:src="@drawable/leave_main" />
-            <TextView
-                android:id="@+id/faxian_tv"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/b_2" />
+
+            <ImageView
+                android:id="@+id/fanxian_bar"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="@string/faxian"
-                android:textAlignment="center"
-                android:textSize="15sp" />
+                android:layout_height="5dp" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="1dp"
@@ -119,18 +86,18 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:clickable="true"
+            android:layout_marginTop="2dp"
             android:orientation="vertical">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
-                android:src="@drawable/apple_my" />
-            <TextView
-                android:id="@+id/wode_tv"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:src="@drawable/b_3" />
+
+            <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:text="@string/wode"
-                android:textAlignment="center"
-                android:textSize="15sp" />
+                android:layout_height="5dp"
+                android:id="@+id/wode_bar" />
         </LinearLayout>
 
 

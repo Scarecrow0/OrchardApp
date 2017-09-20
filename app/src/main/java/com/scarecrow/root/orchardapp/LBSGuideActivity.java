@@ -54,7 +54,7 @@ public class LBSGuideActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (!MainInterfaceActivity.isLogin) {
-                    Toast.makeText(getBaseContext(), "please login before use lbs"
+                    Toast.makeText(getBaseContext(), "请登录后再使用园区导游服务"
                             , Toast.LENGTH_SHORT)
                             .show();
                     return;
@@ -175,7 +175,7 @@ public class LBSGuideActivity extends AppCompatActivity {
             String[] permissions = permissionList.toArray(new String[permissionList.size()]);
             ActivityCompat.requestPermissions(this, permissions, 1);
         } else
-            Toast.makeText(getBaseContext(), "already get permissions"
+            Toast.makeText(getBaseContext(), "已获得所有所需权限"
                     , Toast.LENGTH_SHORT)
                     .show();
 
@@ -191,7 +191,7 @@ public class LBSGuideActivity extends AppCompatActivity {
                     for (int result : grantResults) {
                         if (result != PackageManager.PERMISSION_GRANTED) {
                             Toast.makeText
-                                    (getBaseContext(), "have to gramted all permission", Toast.LENGTH_SHORT)
+                                    (getBaseContext(), "需要获得所需的权限", Toast.LENGTH_SHORT)
                                     .show();
                             finish();
                             return;
@@ -229,12 +229,12 @@ public class LBSGuideActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String params) {
             if (params == null) {
-                Toast.makeText(getBaseContext(), "error in get coodnates!", Toast.LENGTH_SHORT)
+                Toast.makeText(getBaseContext(), "获取坐标时出错!", Toast.LENGTH_SHORT)
                         .show();
                 return;
             }
             if (params.equals("coodination invaild")) {
-                Toast.makeText(getBaseContext(), "invalid coodinates!", Toast.LENGTH_SHORT)
+                Toast.makeText(getBaseContext(), "坐标非法，您正处在园区外，无法使用园区内导航!", Toast.LENGTH_SHORT)
                         .show();
                 return;
             }

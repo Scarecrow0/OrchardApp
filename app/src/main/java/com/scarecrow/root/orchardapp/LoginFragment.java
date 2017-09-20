@@ -26,7 +26,7 @@ public class LoginFragment extends Fragment {
                              Bundle saveInstanceState) {
         final View v = inflater.inflate(R.layout.fragment_login, viewgroup, false);
         mfragmentview = v;
-        Button loginBt = (Button) v.findViewById(R.id.login_button);
+        Button loginBt = v.findViewById(R.id.login_button);
         Button regsiterBt = v.findViewById(R.id.regsiter_button);
         loginBt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,14 +77,14 @@ public class LoginFragment extends Fragment {
         protected void onPostExecute(String mresult){
             if (!mresult.equals("None")) {
                 Toast.makeText
-                        (getContext(), "login success! login automaticlly", Toast.LENGTH_SHORT)
+                        (getContext(), "登陆成功!", Toast.LENGTH_SHORT)
                         .show();
                 muinfo = MainInterfaceActivity.UpdateUInfobyJSONstr(mresult);
                 mLoginSuccessListenner.onLoginSuccess(muinfo);
                 return;
             }
             Toast.makeText
-                    (getContext(), "login failed! please check your username and password", Toast.LENGTH_SHORT)
+                    (getContext(), "登陆失败，请检查用户名及密码是否正确", Toast.LENGTH_SHORT)
                     .show();
         }
     }

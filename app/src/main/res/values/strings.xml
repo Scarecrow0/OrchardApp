@@ -23,7 +23,7 @@
     <string name="yue">余额</string>
     <string name="youhuidengji">优惠等级</string>
     <string name="goumaishuliang">预定数量  : </string>
-    <string name="chongzhi">充值</string>
+    <string name="chongzhi">修改用户信息</string>
     <string name="wodeweizhi">我的位置</string>
     <string name="yunquliebiao">园区列表</string>
     <string name="wodehuodong">我参加的活动</string>
@@ -36,10 +36,10 @@
     <string name="youjixianguo">有机鲜果</string>
     <string name="regsiter_err_info_emptybox">有未填的表项,请填完所有的表项</string>
     <string name="regsiter_err_info_diffpassword">两次密码不一样,重新填写</string>
-    <string name="yunquxinxi">园区信息</string>
-    <string name="yuanqujianjie">园区简介</string>
+    <string name="yunquxinxi">服务信息</string>
+    <string name="yuanqujianjie">服务简介</string>
     <string name="yuanquweizhi">园区位置</string>
-    <string name="ruyuanxuzhi">入园须知</string>
+    <string name="ruyuanxuzhi">用户须知</string>
     <string name="dingmengpiao">订门票</string>
     <string name="yuding">预定</string>
     <string name="yuyue">预约</string>
@@ -56,6 +56,10 @@
     <string name="zantingdingwei">暂停定位</string>
     <string name="zhoubianyou">周边游</string>
     <string name="guoyuanhuodong">果园活动</string>
+    <string name="zhankai">展开</string>
+    <string name="zhedie">折叠</string>
+    <string name="renwujianjie">任务简介:</string>
+    <string name="renwuxuzhe">任务须知:</string>
     <string name="fanxianrenwu">发现新奇活动</string>
     <string name="boughtnotice"> 用户须知:\n \t\t该操作仅为预定该商品,工作人员将会在预定后与您联系确认购买信息(水果:送货或自取,园区门票:园区具体情况),并提供支付办法;为了您能及时收到商品,请确保您注册所留联系方式有效!</string>
 </resources>

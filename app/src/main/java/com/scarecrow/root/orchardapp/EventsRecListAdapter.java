@@ -28,6 +28,7 @@ public class EventsRecListAdapter extends RecyclerView.Adapter<EventsRecListAdap
     private List<OrchardEvent> mEventList;
     private WeakReference<Context> mContext;
     private List<OrchardEvent> newEvnetList;
+    boolean isSpan = false, isForJoinedList = false;
 
     public EventsRecListAdapter (Context context){
         mContext = new WeakReference<Context>(context);
@@ -77,7 +78,12 @@ public class EventsRecListAdapter extends RecyclerView.Adapter<EventsRecListAdap
     }
     @Override
     public int getItemCount(){
-
+        if (isForJoinedList) {
+            if (isSpan || mEventList.size() <= 3)
+                return mEventList.size();
+            else
+                return 3;
+        }
         return  mEventList.size();
     }
 
@@ -103,7 +109,7 @@ public class EventsRecListAdapter extends RecyclerView.Adapter<EventsRecListAdap
                 }
             }
         }
-
+        isForJoinedList = true;
         updateData(newEvnetList);
     }
 

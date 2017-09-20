@@ -77,7 +77,7 @@ public class OrchardSingleActivity extends AppCompatActivity {
 
                 if(!MainInterfaceActivity.isLogin){
                     Toast.makeText
-                            (getBaseContext(),"login in before book ticket ", Toast.LENGTH_LONG)
+                            (getBaseContext(), "请登陆后订票!!", Toast.LENGTH_LONG)
                             .show();
                     return;
                 }
@@ -145,23 +145,23 @@ public class OrchardSingleActivity extends AppCompatActivity {
         protected void onPostExecute(Void param) {
             if (res.equals("")) {
                 Toast.makeText
-                        (getBaseContext(), "booked failed ,cause by connection error", Toast.LENGTH_SHORT)
+                        (getBaseContext(), "门票预定失败，可能是网路连接失败", Toast.LENGTH_SHORT)
                         .show();
                 finish();
             }
             switch (res){
                 case "0":
-                    Toast.makeText(getBaseContext(),"booked successed",Toast.LENGTH_SHORT)
+                    Toast.makeText(getBaseContext(), "门票预定成功", Toast.LENGTH_SHORT)
                             .show();
                     finish();
                     break;
                 case "1":
-                    Toast.makeText(getBaseContext(),"dont have enough tickets",Toast.LENGTH_SHORT)
+                    Toast.makeText(getBaseContext(), "  余票不足 ", Toast.LENGTH_SHORT)
                             .show();
                     finish();
                     break;
                 case "2":
-                    Toast.makeText(getBaseContext(),"out of date",Toast.LENGTH_SHORT)
+                    Toast.makeText(getBaseContext(), "预定日期晚于当前日期 预定失败", Toast.LENGTH_SHORT)
                             .show();
                     finish();
                     break;

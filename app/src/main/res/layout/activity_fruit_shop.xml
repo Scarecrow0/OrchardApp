@@ -14,6 +14,8 @@
             android:background="@color/buttongreen"
             android:gravity="center"
             android:text="@string/youjixianguo"
+            android:padding="7dp"
+            android:textColor="#000000"
             android:textSize="25sp" />
 
         <com.scarecrow.root.orchardapp.AdsBanner
@@ -41,22 +43,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/buttongreen"
-                android:padding="12dp"
+                android:padding="8dp"
                 android:text="name"
-                android:textColor="#000000"
-                android:textSize="30sp" />
+                android:textColor="#FFFFF0"
+                android:textSize="22sp" />
 
             <TextView
                 android:id="@+id/fruitshop_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
-                android:layout_marginEnd="10dp"
-                android:layout_marginTop="5dp"
+                android:paddingStart="12dp"
                 android:padding="5dp"
                 android:text="price"
                 android:textColor="@color/colorAccent"
-                android:textSize="30sp" />
+                android:textSize="23sp" />
 
             <TextView
                 android:id="@+id/fruitshop_stockremain"
@@ -92,7 +93,7 @@
                     android:gravity="center"
 
                     android:text="@string/goumaishuliang"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
                 <NumberPicker
                     android:id="@+id/fruit_buy_num"
@@ -121,7 +122,7 @@
                 android:padding="8dp"
                 android:text="@string/boughtnotice"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="13sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -139,7 +140,7 @@
             android:padding="10dp"
             android:text="@string/shuiguojianjie"
             android:textColor="#000000"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -153,8 +154,7 @@
             android:layout_height="wrap_content"
             android:padding="13dp"
             android:text="bref"
-            android:textColor="#000000"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
 
 
 
@@ -163,6 +163,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="11dp"
-            android:textSize="18sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 </ScrollView>

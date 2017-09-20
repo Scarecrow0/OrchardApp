@@ -26,20 +26,19 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:gravity="end"
-            android:paddingEnd="10dp"
-            android:textColor="#000000"
+            android:gravity="start"
+            android:paddingStart="10dp"
             android:textSize="14sp"/>
         <TextView
             android:id="@+id/event_occur_orchard_n_date"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:gravity="end"
+            android:gravity="start"
             android:padding="3dp"
-            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
             android:textColor="@color/colorAccent"
-            android:textSize="15sp"/>
+            android:textSize="14sp" />
             <!--set this TextView to display event state to user-->
     </LinearLayout>
 </LinearLayout>

@@ -41,7 +41,8 @@ public class SurroundPlaces extends PlaceInfoSingle {
             try {
                 Log.d(TAG, "onPostExecute:  GETSurrPlace jsonarray is : " + jsonArray);
                 PlaceInfoSingle elem;
-                for (int i = 1; i < jsonArray.length(); i++) {
+                mPlaces.clear();
+                for (int i = 0; i < jsonArray.length(); i++) {
                     elem = new PlaceInfoSingle(false);
                     parseSingleJSONObj(jsonArray.getJSONObject(i), elem);
                     mPlaces.add(elem);

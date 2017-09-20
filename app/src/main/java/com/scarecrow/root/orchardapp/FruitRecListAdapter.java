@@ -27,6 +27,7 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
     private List<FruitsInfo> mFruitList = new ArrayList<>();
     private Context mContext;
     private AdapterReadyListenner mARl;
+    boolean isSpan = false;
     private boolean isForBroughtList = false;
     //Fruit --> imageurl ,all kinds of text;
 
@@ -107,7 +108,13 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
 
     @Override
     public int getItemCount(){
-        return mFruitList.size();
+        if (isForBroughtList) {
+            if (isSpan || mFruitList.size() <= 3)
+                return mFruitList.size();
+            else
+                return 3;
+        } else
+            return mFruitList.size();
     }
 
     public void randomKickFruitListItem(){
@@ -139,6 +146,7 @@ public class FruitRecListAdapter extends RecyclerView.Adapter<FruitRecListAdapte
                 }
             }
         }
+        isForBroughtList = true;
         mFruitList.clear();
         mFruitList.addAll(newFruitList);
         notifyDataSetChanged();

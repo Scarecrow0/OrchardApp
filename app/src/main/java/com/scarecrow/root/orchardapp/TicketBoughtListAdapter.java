@@ -21,6 +21,7 @@ import java.util.List;
 public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtListAdapter.ViewHolder> {
     private List<String[]> mTicketList = new ArrayList<>();
     private WeakReference<Context> mContext;
+    boolean isSpan = false, isForBookedList = false;
     public TicketBoughtListAdapter(Context context){
         mContext = new WeakReference<>(context);
         if(MainInterfaceActivity.isLogin)
@@ -53,6 +54,12 @@ public class TicketBoughtListAdapter extends RecyclerView.Adapter<TicketBoughtLi
 
     @Override
     public int getItemCount(){
+        if (isForBookedList) {
+            if (isSpan || mTicketList.size() <= 3)
+                return mTicketList.size();
+            else
+                return 3;
+        }
         return mTicketList.size();
     }
 

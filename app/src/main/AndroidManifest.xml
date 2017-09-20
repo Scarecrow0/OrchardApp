@@ -14,7 +14,6 @@
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
     <application
-        android:name=".LeakDetecter"
         android:allowBackup="true"
         android:icon="@mipmap/icon_guoyouxuan"
         android:label="@string/app_name"
@@ -24,12 +23,13 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".MainInterfaceActivity">
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name=".MainInterfaceActivity"></activity>
         <activity android:name=".FruitMainActivity">
         </activity>
         <activity android:name=".FruitShopActivity">
@@ -46,6 +46,7 @@
         </activity>
         <activity android:name=".OrchardDetailActivity">
         </activity>
+        <activity android:name=".ActivityOrchardExtendService"></activity>
 
         <meta-data android:name="com.amap.api.v2.apikey"
             android:value="3c3edcd5e8fb0660561751a36a056163">
@@ -53,13 +54,6 @@
         <service android:name="com.amap.api.location.APSService">
 
         </service>
-        <service
-            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
-            android:enabled="false"
-            android:process=":leakcanary" />
-        <service
-            android:name="com.squareup.leakcanary.DisplayLeakService"
-            android:enabled="false" />
 
     </application>
 

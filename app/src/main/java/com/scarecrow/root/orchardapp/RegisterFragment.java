@@ -114,13 +114,13 @@ public class RegisterFragment extends Fragment {
         protected void onPostExecute(Boolean res){
             if (res.equals(true)) {
                 Toast.makeText
-                        (getContext(), "register success! login automaticlly", Toast.LENGTH_SHORT)
+                        (getContext(), "用户信息注册成功，自动登录！", Toast.LENGTH_SHORT)
                         .show();
                 mLoginSuccessListenner.onLoginSuccess(uinfo);
             }
             else if(res.equals(false)) {
                 Toast.makeText
-                        (getContext(), "register failed! this username had been used!", Toast.LENGTH_SHORT)
+                        (getContext(), "注册失败，该用户名已被使用!", Toast.LENGTH_SHORT)
                         .show();
             }
         }
