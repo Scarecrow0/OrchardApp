@@ -40,6 +40,11 @@ public class OrchardSingleActivity extends AppCompatActivity {
         mBookingDateMonthPicker.setMinValue(1);
         mBookingDateDayPicker.setMaxValue(30);
         mBookingAmmountPicker.setMaxValue(50);
+
+        mBookingAmmountPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        mBookingDateDayPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+        mBookingDateMonthPicker.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
+
         TextView tv_ = (TextView) findViewById(R.id.orchard_ticket_price);
         tv_.setText(mOchardInfo.ticket_price + "￥");
         tv_ = (TextView) findViewById(R.id.orchard_single_name);

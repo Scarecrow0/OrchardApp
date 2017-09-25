@@ -2,7 +2,6 @@ package com.scarecrow.root.orchardapp;
 
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -12,8 +11,6 @@ import com.squareup.picasso.Picasso;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 /**
  * Created by root on 17-8-1.
@@ -64,15 +61,8 @@ public class AdsBannerAdapter extends PagerAdapter {
             Picasso.with(mContext.get())
                     .load(mimageUrlList.get(position % size))
                     .into(imageView);
-            imageView.setScaleType(ImageView.ScaleType.CENTER);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             IVList.add(imageView);
-            if (!imageView.hasOnClickListeners())
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Log.d(TAG, "onClick on banner: " + getAbsUrlList().get(position % size));
-                    }
-                });
         }else {
             imageView = IVList.get(position);
         }

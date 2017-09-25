@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -85,8 +84,7 @@ public class GuideFragment_Home extends Fragment implements Button.OnClickListen
                 startActivity(new Intent(getContext(),OrchardMainActivity.class));
                 break;
             case R.id.home_img_button_healthy:
-                Toast.makeText(getContext(), "尚未开放，敬请等待！", Toast.LENGTH_LONG)
-                        .show();
+                startActivity(new Intent(getContext(), ActivityHealthyMain.class));
                 break;
             default:
                 break;

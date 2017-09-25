@@ -7,11 +7,14 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="195dp"
-        android:id="@+id/extend_activity_header_iv" />
+        android:id="@+id/extend_activity_header_iv"
+        android:scaleType="centerCrop" />
 
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/extend_activity_fragment"
-        android:name="com.scarecrow.root.orchardapp.EmptyFragment"></fragment>
+        android:name="com.scarecrow.root.orchardapp.EmptyFragment">
+
+    </fragment>
 </LinearLayout>

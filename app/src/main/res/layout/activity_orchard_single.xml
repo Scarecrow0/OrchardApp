@@ -13,20 +13,13 @@
             android:gravity="center"
             android:text="@string/yunquxinxi"
             android:textSize="25sp"/>
-        <TextView
-            android:id="@+id/orchard_single_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="left"
-            android:padding="10dp"
-            android:textColor="#000000"
-            android:textSize="20sp" />
 
         <com.scarecrow.root.orchardapp.AdsBanner
             android:id="@+id/orchard_single_banner"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="190dp">
         </com.scarecrow.root.orchardapp.AdsBanner>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,6 +68,15 @@
                     android:src="@drawable/house_icon"/>
             </LinearLayout>
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/orchard_single_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/orchard_ticket_price"

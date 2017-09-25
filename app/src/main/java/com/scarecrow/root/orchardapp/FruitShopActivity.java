@@ -47,6 +47,7 @@ public class FruitShopActivity extends AppCompatActivity {
         final NumberPicker np = (NumberPicker) findViewById(R.id.fruit_buy_num);
         np.setMaxValue(99);
         np.setMinValue(1);
+        np.setDescendantFocusability(NumberPicker.FOCUS_BLOCK_DESCENDANTS);
 
         Button bt = (Button) findViewById(R.id.fruit_buy_button);
         handler = new Handler(){

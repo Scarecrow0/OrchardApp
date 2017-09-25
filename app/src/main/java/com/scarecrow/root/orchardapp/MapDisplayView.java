@@ -51,7 +51,7 @@ public class MapDisplayView extends View {
         rd.setLooperReadyListener(new ResDownloader.LooperReadyListener() {
             @Override
             public void onlooperReady() {
-                rd.queueDownload("canvas", MainInterfaceActivity.Server_ip+"/image/map"+num+".jpg","",1);
+                rd.queueDownload("canvas", MainInterfaceActivity.Server_ip + "/image/map.png", "", 1);
             }
         });
         rd.start();
