@@ -47,10 +47,9 @@
         <activity android:name=".OrchardDetailActivity">
         </activity>
         <activity android:name=".ActivityOrchardExtendService">
-
         </activity>
-        <activity android:name=".ActivityHealthyMain">
-
+        <activity android:name=".ActivityHealthyMain"></activity>
+        <activity android:name=".NewsSingleActivity">
         </activity>
 
         <meta-data android:name="com.amap.api.v2.apikey"

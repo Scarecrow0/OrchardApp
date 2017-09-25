@@ -29,11 +29,7 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     public static String Server_ip = "http://47.94.227.86:8080/appserver";
     public static UserInfo logined_usr = new UserInfo();
     public static boolean isLogin = false;
-    private int curr_page = 0;
-    public static PlaceInfoSingle TheOrchard = new PlaceInfoSingle(true);
-    public static OrchardEvent orchardEvent = new OrchardEvent();
     public static SurroundPlaces surroundPlaces = new SurroundPlaces();
-    public static boolean isGetEventList = false;
     List<Fragment> mFraList;
     ImageView iv[];
 
@@ -99,7 +95,6 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
         transaction.hide(mFraList.get(1));
         transaction.hide(mFraList.get(2));
         transaction.show(mFraList.get(fragment));
-        curr_page = fragment;
         transaction.commit();
         for (int i = 0; i < 3; i++)
             iv[i].setBackgroundColor(Color.WHITE);
@@ -118,7 +113,6 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
         transaction.hide(mFraList.get(2));
         iv[0].setBackgroundColor(getResources().getColor(R.color.buttom_bar_blue));
         transaction.show(mFraList.get(0));
-        curr_page = 0;
         transaction.commitAllowingStateLoss();
     }
 
@@ -136,20 +130,16 @@ public class MainInterfaceActivity extends AppCompatActivity implements Button.O
     public void onPause() {
         super.onPause();
         Log.d(TAG, "MainInterface onPause: ");
-        //       cleanFragment();
     }
     @Override
     public void onRestart() {
         super.onRestart();
-        //     initFragment();
         Log.d(TAG, "MainInterface onStart: ");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        //   initFragment();
-        //      changeFragment(curr_page);
     }
 
     @Override
