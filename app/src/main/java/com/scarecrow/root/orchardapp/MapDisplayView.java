@@ -12,8 +12,6 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
-import java.util.Random;
-
 import static android.content.ContentValues.TAG;
 
 /**
@@ -21,10 +19,9 @@ import static android.content.ContentValues.TAG;
  */
 
 public class MapDisplayView extends View {
-    private Canvas canvas;
     private Paint paint;
     int mMapnum = 0;
-    Random random = new Random(10);
+
     private Bitmap canvas_bg = BitmapFactory.decodeResource(getResources(),R.drawable.placeholder);
             // BitmapFactory.decodeFile(ALBUM_PATH+"placeholder.png");
     ResDownloader rd;

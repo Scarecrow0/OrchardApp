@@ -76,6 +76,14 @@ public class FruitShopActivity extends AppCompatActivity {
                 buyer.execute();
             }
         });
+        bt = (Button) findViewById(R.id.to_donate_tree_btn);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(getBaseContext(), ActivityDonateTree.class);
+                startActivity(in);
+            }
+        });
     }
 
     private void processJSON(String jsonstr){

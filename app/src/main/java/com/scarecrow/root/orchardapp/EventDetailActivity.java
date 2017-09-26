@@ -54,14 +54,17 @@ public class EventDetailActivity extends AppCompatActivity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!check_joined(or))
+                if (MainInterfaceActivity.isLogin) {
+                    if (check_joined(or)) {
+                        Toast.makeText(getBaseContext(), "参加任务失败! 请勿重复参加任务!", Toast.LENGTH_SHORT)
+                                .show();
+                        return;
+                    }
                     new join_event().execute();
-                else if (!MainInterfaceActivity.isLogin)
+                } else
                     Toast.makeText(getBaseContext(), "参加任务失败! 请登录后参加任务!", Toast.LENGTH_SHORT)
                             .show();
-                else
-                    Toast.makeText(getBaseContext(), "参加任务失败! 请勿重复参加任务!", Toast.LENGTH_SHORT)
-                            .show();
+
             }
         });
         after_join = new Handler(){

@@ -7,6 +7,7 @@
     <ImageView
         android:id="@+id/ticket_list_image"
         android:layout_width="120dp"
+        android:scaleType="centerCrop"
         android:layout_height="100dp" />
 
     <LinearLayout

@@ -117,6 +117,20 @@
                 android:textColor="#000000"
                 android:textSize="13sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="donate_tree" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="donate_tree"
+                android:layout_gravity="end"
+                android:textSize="13sp"
+                android:id="@+id/to_donate_tree_btn" />
+
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
