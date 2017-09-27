@@ -15,12 +15,13 @@ import java.util.Random;
 
 /**
  * Created by root on 17-9-26.
+ *
  */
 
 public class ViewDonateTree extends View {
     private Paint paint;
-    private Bitmap canvas_bg = BitmapFactory.decodeResource(getResources(), R.drawable.donate_tree),
-            apple_img = BitmapFactory.decodeResource(getResources(), R.drawable.donate_tree_apple);
+    private Bitmap canvas_bg = BitmapFactory.decodeResource(getResources(), R.mipmap.donate_tree),
+            apple_img = BitmapFactory.decodeResource(getResources(), R.mipmap.donate_tree_apple);
     private List<Coordinate> mApplesPosition = new ArrayList<>();
     Random random = new Random();
 
@@ -33,7 +34,7 @@ public class ViewDonateTree extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
-        canvas.drawBitmap(canvas_bg, 0, 0, paint);
+        canvas.drawBitmap(canvas_bg, 180, 0, paint);
         for (Coordinate c : mApplesPosition) {
             canvas.drawBitmap(apple_img, c.x, c.y, paint);
         }
@@ -42,11 +43,11 @@ public class ViewDonateTree extends View {
 
     public void spanApplesCoordinations(int apple_num) {
         for (int i = 0; i < apple_num; i++) {
-            Coordinate c = new Coordinate(250 + random.nextInt(600),
-                    370 + random.nextInt(800));
+            Coordinate c = new Coordinate(260 + random.nextInt(420),
+                    170 + random.nextInt(600));
             while (!distantCheck(c)) {
-                c = new Coordinate(250 + random.nextInt(600),
-                        370 + random.nextInt(800));
+                c = new Coordinate(260 + random.nextInt(420),
+                        170 + random.nextInt(600));
             }
             mApplesPosition.add(c);
         }

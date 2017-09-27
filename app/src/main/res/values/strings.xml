@@ -61,8 +61,14 @@
     <string name="kupushizhishi">科普知识</string>
     <string name="zhedie">折叠</string>
     <string name="lilacishu">浏览次数</string>
+    <string name="aixinguoshu">爱心果树</string>
+    <string name="zongjuanxuanjinge">总捐献金额</string>
+    <string name="yijiechuaixinguo">已结出爱心果</string>
+    <string name="aixinguoshu_bref">您在平台花的分一块钱都将有1%被用于当地残疾人扶持上</string>
+    <string name="aixingguoshu_intro">爱心树：您在平台花的分一块钱都将有1%被用于当地残疾人扶持上，平台交易额每达到10万元，您都将从平台爱心树上，清楚的看到您的爱心开花结果。</string>
     <string name="renwujianjie">任务简介:</string>
     <string name="renwuxuzhe">任务须知:</string>
+    <string name="chakanaixinguoshu">查看爱心果树 </string>
     <string name="fanxianrenwu">发现新奇活动</string>
     <string name="boughtnotice"> 用户须知:\n \t\t该操作仅为预定该商品,工作人员将会在预定后与您联系确认购买信息(水果:送货或自取,园区门票:园区具体情况),并提供支付办法;为了您能及时收到商品,请确保您注册所留联系方式有效!</string>
 </resources>

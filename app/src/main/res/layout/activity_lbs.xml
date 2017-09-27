@@ -32,7 +32,7 @@
             </LinearLayout>
             <com.scarecrow.root.orchardapp.MapDisplayView
                 android:id="@+id/map_display"
-                android:layout_width="800px"
+                android:layout_width="1080px"
                 android:layout_height="800px"
                 android:layout_gravity="center" />
         <LinearLayout

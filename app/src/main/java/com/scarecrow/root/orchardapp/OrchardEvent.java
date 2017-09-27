@@ -52,7 +52,7 @@ public class OrchardEvent implements Serializable{
         new getEventList().execute(1);
     }
     void updateAllEventList(){
-        new getEventList().execute(2);
+        new getEventList().execute(1);
     }
     public interface onEventListReadyListener{
         void onEventListReady(List<OrchardEvent> eventList);
@@ -73,7 +73,7 @@ public class OrchardEvent implements Serializable{
 
                 String str_res = new ServerContacter()
                         .getURLString(request_url
-                                        ,"currorchard="+ MainInterfaceActivity.logined_usr.currorchard);
+                                , "");
                 if(str_res != null){
                     processJSON(str_res);
                 }
@@ -87,8 +87,8 @@ public class OrchardEvent implements Serializable{
 
         @Override
         protected void onPostExecute(Void param){
-
-            mERL.onEventListReady(mEventList);
+            if (mERL != null)
+                mERL.onEventListReady(mEventList);
             cancel(false);
         }
 

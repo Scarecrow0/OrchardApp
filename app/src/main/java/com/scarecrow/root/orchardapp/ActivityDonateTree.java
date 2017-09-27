@@ -22,7 +22,8 @@ public class ActivityDonateTree extends AppCompatActivity {
         super.onCreate(bundle);
         setContentView(R.layout.activity_donate_tree);
         mTreeView = (ViewDonateTree) findViewById(R.id.donate_tree_draw_view);
-        mTreeView.spanApplesCoordinations(20);
+        new GetDonateInfoFromServer().execute();
+
     }
 
     private class GetDonateInfoFromServer extends AsyncTask<Void, Void, JSONObject> {
@@ -30,7 +31,7 @@ public class ActivityDonateTree extends AppCompatActivity {
         protected JSONObject doInBackground(Void... params) {
             try {
                 String res = new ServerContacter()
-                        .getURLString(MainInterfaceActivity.Server_ip + "/app/get_donate", "");
+                        .getURLString(MainInterfaceActivity.Server_ip + "/app/get_donate_info", "");
                 JSONObject json_obj = new JSONObject(res);
                 return json_obj;
 
