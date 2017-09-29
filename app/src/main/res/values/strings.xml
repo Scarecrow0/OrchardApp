@@ -62,8 +62,8 @@
     <string name="zhedie">折叠</string>
     <string name="lilacishu">浏览次数</string>
     <string name="aixinguoshu">爱心果树</string>
-    <string name="zongjuanxuanjinge">总捐献金额</string>
-    <string name="yijiechuaixinguo">已结出爱心果</string>
+    <string name="zongjuanxuanjinge">总捐献金额(元)</string>
+    <string name="yijiechuaixinguo">已结出爱心果(个)</string>
     <string name="aixinguoshu_bref">您在平台花的分一块钱都将有1%被用于当地残疾人扶持上</string>
     <string name="aixingguoshu_intro">爱心树：您在平台花的分一块钱都将有1%被用于当地残疾人扶持上，平台交易额每达到10万元，您都将从平台爱心树上，清楚的看到您的爱心开花结果。</string>
     <string name="renwujianjie">任务简介:</string>

@@ -23,34 +23,34 @@
         android:theme="@style/AppTheme">
 
 
-        <activity android:name=".WelcomeActivity">
+        <activity android:name=".activties.ActivityWelcomePage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".MainInterfaceActivity"></activity>
-        <activity android:name=".FruitMainActivity">
+        <activity android:name=".activties.ActivityMainInterface"></activity>
+        <activity android:name=".activties.ActivityFruitMain">
         </activity>
-        <activity android:name=".FruitShopActivity">
+        <activity android:name=".activties.ActivityFruitShop">
         </activity>
-        <activity android:name=".LoginRegsitActivity">
+        <activity android:name=".activties.ActivityLoginRegsit">
         </activity>
-        <activity android:name=".OrchardMainActivity">
+        <activity android:name=".activties.ActivityOrchardMain">
         </activity>
-        <activity android:name=".EventDetailActivity">
+        <activity android:name=".activties.ActivityEventDetail">
         </activity>
-        <activity android:name=".LBSGuideActivity">
+        <activity android:name=".activties.ActivityLBSGuide">
         </activity>
-        <activity android:name=".OrchardSingleActivity">
+        <activity android:name=".activties.ActivityOrchardDetail">
         </activity>
-        <activity android:name=".OrchardDetailActivity">
+        <activity android:name=".activties.ActivityOrchardInfo">
         </activity>
-        <activity android:name=".ActivityOrchardExtendService">
+        <activity android:name=".activties.ActivityOrchardExtendService">
         </activity>
-        <activity android:name=".ActivityHealthyMain"></activity>
-        <activity android:name=".NewsSingleActivity"></activity>
-        <activity android:name=".ActivityDonateTree">
+        <activity android:name=".activties.ActivityHealthyMain"></activity>
+        <activity android:name=".activties.ActivityNewsDetail"></activity>
+        <activity android:name=".activties.ActivityDonateTree">
         </activity>
 
         <meta-data android:name="com.amap.api.v2.apikey"

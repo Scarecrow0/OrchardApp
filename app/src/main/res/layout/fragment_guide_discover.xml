@@ -28,12 +28,12 @@
                     android:textSize="28sp" />
             </LinearLayout>
 
-            <com.scarecrow.root.orchardapp.AdsBanner
+            <com.scarecrow.root.orchardapp.views.ViewPagerAdsBanner
                 android:id="@+id/discover_banner"
                 android:layout_width="match_parent"
                 android:layout_height="180dp">
 
-            </com.scarecrow.root.orchardapp.AdsBanner>
+            </com.scarecrow.root.orchardapp.views.ViewPagerAdsBanner>
 
             <LinearLayout
                 android:layout_width="match_parent"

@@ -30,7 +30,8 @@
                 android:layout_height="2dp"
                 android:background="@color/lightgray">
             </LinearLayout>
-            <com.scarecrow.root.orchardapp.MapDisplayView
+
+            <com.scarecrow.root.orchardapp.views.ViewMapDisplay
                 android:id="@+id/map_display"
                 android:layout_width="1080px"
                 android:layout_height="800px"

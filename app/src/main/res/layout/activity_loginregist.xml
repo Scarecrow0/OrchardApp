@@ -12,7 +12,7 @@
         android:textSize="30sp"/>
     <fragment
         android:id="@+id/loginresg_interface_fragment"
-        android:name="com.scarecrow.root.orchardapp.EmptyFragment"
+        android:name="com.scarecrow.root.orchardapp.fragments.FragmentEmpty"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
     </fragment>

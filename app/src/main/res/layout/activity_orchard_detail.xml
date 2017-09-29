@@ -19,12 +19,12 @@
             android:text="@string/yuanqujianjie"
             android:textSize="25sp" />
 
-        <com.scarecrow.root.orchardapp.AdsBanner
+        <com.scarecrow.root.orchardapp.views.ViewPagerAdsBanner
             android:id="@+id/orchard_detail_banner"
             android:layout_width="match_parent"
             android:layout_height="200dp">
 
-        </com.scarecrow.root.orchardapp.AdsBanner>
+        </com.scarecrow.root.orchardapp.views.ViewPagerAdsBanner>
 
         <TextView
             android:layout_width="match_parent"

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/extend_activity_fragment"
-        android:name="com.scarecrow.root.orchardapp.EmptyFragment">
+        android:name="com.scarecrow.root.orchardapp.fragments.FragmentEmpty">
 
     </fragment>
 </LinearLayout>

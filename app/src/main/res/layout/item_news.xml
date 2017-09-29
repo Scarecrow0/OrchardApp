@@ -38,4 +38,9 @@
             android:textSize="13sp" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/lightgray"></LinearLayout>
 </LinearLayout>
